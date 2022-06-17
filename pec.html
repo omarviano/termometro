@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>PEC</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Roboto:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --font: "Nunito", sans-serif;
+
+        --white: #fff;
+        --green: #0cada4;
+        --green-100: #eff9f6;
+        --gray-100: #ececec;
+        --gray-600: #9b9b9b;
+        --gray-650: #969696;
+        --gray-700: #6a6a6a;
+        --blue-700: #434760;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      @media (max-width: 1080px) {
+        html {
+          font-size: 93.75%;
+        }
+      }
+
+      @media (max-width: 720px) {
+        html {
+          font-size: 87.5%;
+        }
+      }
+
+      body,
+      input,
+      textarea,
+      select,
+      button {
+        font: 400 1rem var(--font);
+        font-display: optional;
+        color: var(--black);
+      }
+
+      button {
+        cursor: pointer;
+        outline: none;
+        border: none;
+      }
+
+      body {
+        background-color: var(--white);
+      }
+
+      .container {
+        max-width: 1440px;
+        margin: auto;
+      }
+
+      header {
+        padding: 5% 6% 4%;
+        background-color: var(--green-100);
+      }
+
+      .logo {
+        margin-bottom: 28px;
+      }
+
+      h1 {
+        font-size: 22px;
+        max-width: 578px;
+        font-weight: 400;
+      }
+
+      h2 {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--green);
+        margin-top: 10px;
+      }
+
+      section {
+        padding: 0 6%;
+        margin: 42px 0 60px;
+      }
+
+      section .section-title {
+        color: var(--gray-600);
+        font-size: 16px;
+      }
+
+      form {
+        margin-top: 23px;
+      }
+
+      form button[type="submit"] {
+        width: 100%;
+        font-weight: 800;
+        font-size: 20px;
+        color: var(--white);
+        background-color: var(--green);
+        padding: 16px;
+        border-radius: 12px;
+        transition: filter 0.25s;
+      }
+
+      form button[type="submit"]:hover,
+      form button[type="submit"]:focus {
+        filter: brightness(0.915);
+      }
+
+      .options {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+
+      .option {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        padding: 20px;
+        box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.05);
+        border-radius: 12px;
+        user-select: none;
+        border: 1px solid transparent;
+        transition: border-color 0.25s;
+      }
+
+      .option .option-check input {
+        display: none;
+      }
+
+      .option .option-check input:checked + label span {
+        width: 15px;
+        height: 15px;
+        border-radius: 2px;
+      }
+
+      .checkbox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 23px;
+        height: 23px;
+        border: 1px solid var(--gray-650);
+        border-radius: 2px;
+        cursor: pointer;
+      }
+
+      .checkbox span {
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background-color: var(--green);
+        transition: width 0.15s, height 0.15s, border-radius 0.25s;
+      }
+
+      .option.selected {
+        border-color: var(--green);
+      }
+
+      option .option-label {
+        color: var(--blue-700);
+        font-size: 14px;
+      }
+
+      footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding-bottom: 55px;
+      }
+
+      footer p {
+        color: var(--gray-700);
+        font-size: 14px;
+      }
+
+      .overlay {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        min-height: 100vh;
+        background-color: rgba(0, 0, 0, 0.25);
+      }
+
+      .modal {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        background: var(--white);
+        max-width: 825px;
+        height: max-content;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <svg
+            width="149"
+            height="57"
+            viewBox="0 0 149 57"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M72.2129 7.75775C72.3729 7.75775 72.533 7.75775 72.693 7.75775C74.3733 7.75775 76.0003 7.97472 77.5472 8.38155C79.0941 8.78837 80.4811 9.43929 81.6546 10.3072C82.8548 11.1751 83.7883 12.3413 84.5084 13.7787C85.2286 15.2162 85.5753 16.9791 85.5753 19.0675V30.4857C85.5753 32.2757 85.2286 33.8487 84.5084 35.2048C83.7883 36.5609 82.8548 37.7 81.6813 38.595C80.5077 39.5172 79.1742 40.1952 77.6806 40.6563C76.187 41.1173 74.6933 41.3343 73.1731 41.3343C73.013 41.3343 72.8264 41.3343 72.613 41.3343C71.7595 41.3343 70.906 41.2529 70.1059 41.0902C69.119 40.8732 68.1589 40.602 67.2254 40.2223V55.1392C67.2254 56.0071 66.5319 56.6851 65.7051 56.6851H61.9977C61.1443 56.6851 60.4775 55.98 60.4775 55.1392V10.3885C62.1844 9.60202 64.1315 8.9511 66.3185 8.46291C68.2655 7.97472 70.2392 7.75775 72.2129 7.75775ZM71.5195 35.2862C71.7328 35.2862 71.9195 35.2862 72.0796 35.2862C73.7599 35.2862 75.2535 34.9336 76.587 34.2013C77.9206 33.469 78.6674 32.2214 78.8274 30.4857V18.9319C78.8274 18.0097 78.6407 17.2232 78.2673 16.5452C77.8939 15.8671 77.4138 15.3247 76.8271 14.9179C76.2403 14.511 75.5468 14.2127 74.7734 14.0228C73.9999 13.833 73.1731 13.7516 72.3196 13.7516C70.4259 13.7516 68.7456 14.1042 67.2254 14.8094V34.5539C67.9722 34.798 68.7723 34.9878 69.6258 35.1235C70.2392 35.2319 70.8793 35.2862 71.5195 35.2862Z"
+              fill="#434760"
+            />
+            <path
+              d="M105.125 41.3614C103.578 41.3614 102.031 41.1444 100.511 40.6833C98.9909 40.2223 97.6573 39.5171 96.4571 38.595C95.2569 37.6457 94.3234 36.5066 93.6032 35.1234C92.8831 33.7402 92.5364 32.1129 92.5364 30.2415V18.8776C92.5364 17.0062 92.8831 15.3789 93.6032 13.9686C94.3234 12.5854 95.2835 11.4191 96.4571 10.497C97.6573 9.57485 98.9909 8.89681 100.511 8.43575C102.031 7.97468 103.552 7.75771 105.125 7.75771C106.646 7.75771 108.139 7.97468 109.633 8.43575C111.126 8.89681 112.46 9.57485 113.633 10.497C114.807 11.4191 115.741 12.5582 116.461 13.9686C117.181 15.3518 117.528 17.0062 117.528 18.8776V24.546C117.528 26.3089 116.114 27.7463 114.38 27.7463H99.3376V29.9974C99.3376 30.7568 99.4976 31.4077 99.8177 31.9773C100.138 32.5469 100.564 33.035 101.071 33.4419C101.578 33.8487 102.165 34.1741 102.858 34.3911C103.525 34.6081 104.245 34.7166 104.965 34.7166C106.165 34.7166 107.286 34.4725 108.379 34.0114C109.073 33.7131 109.633 33.252 110.113 32.6825C110.62 32.0587 111.526 31.8959 112.22 32.3028L116.487 34.7979C115.874 35.9099 115.127 36.8863 114.247 37.7C113.367 38.5136 112.433 39.1916 111.42 39.7612C110.406 40.3308 109.366 40.7376 108.246 41.0088C107.206 41.2258 106.139 41.3614 105.125 41.3614ZM111.02 18.986C111.02 18.2266 110.86 17.5757 110.54 17.0062C110.22 16.4366 109.766 15.9756 109.206 15.5687C108.646 15.1619 108.032 14.8907 107.339 14.7008C106.646 14.511 105.925 14.4296 105.179 14.4296C104.432 14.4296 103.712 14.511 102.992 14.7008C102.271 14.8907 101.631 15.189 101.098 15.5687C100.538 15.9756 100.111 16.4637 99.7643 17.0333C99.4443 17.63 99.2842 18.308 99.3376 19.0945V22.0237H111.02V18.986Z"
+              fill="#434760"
+            />
+            <path
+              d="M123.982 18.8776C123.982 17.0062 124.329 15.3789 125.049 13.9686C125.769 12.5854 126.729 11.4191 127.903 10.497C129.103 9.57485 130.436 8.89681 131.93 8.43575C133.424 7.97468 134.944 7.75771 136.518 7.75771C137.744 7.75771 138.998 7.92043 140.305 8.21877C141.612 8.51711 142.812 9.03242 143.932 9.68334C145.052 10.3614 146.039 11.2293 146.919 12.3141C147.773 13.399 148.44 14.7008 148.893 16.2468L144.092 18.091C143.399 18.3623 142.625 18.0639 142.279 17.413C141.852 16.5722 141.238 15.8942 140.465 15.4331C139.371 14.7551 138.145 14.4296 136.838 14.4296C136.091 14.4296 135.371 14.511 134.651 14.7008C133.93 14.8907 133.29 15.1619 132.704 15.5416C132.117 15.9213 131.663 16.3824 131.29 16.9248C130.917 17.4672 130.73 18.091 130.73 18.7962V30.2958C130.73 31.7061 131.317 32.7909 132.517 33.5504C133.717 34.3098 135.024 34.6623 136.518 34.6623C137.824 34.6623 139.078 34.3369 140.305 33.6588C141.158 33.1978 141.825 32.5197 142.279 31.6518C142.625 31.0009 143.399 30.7297 144.066 31.0009L149 32.8723C148.546 34.4182 147.88 35.7201 146.999 36.8049C146.119 37.8898 145.106 38.7577 143.986 39.4357C142.865 40.1138 141.638 40.602 140.332 40.9003C139.025 41.2258 137.744 41.3614 136.518 41.3614C134.971 41.3614 133.424 41.1444 131.93 40.6833C130.436 40.2223 129.103 39.5442 127.903 38.6221C126.702 37.7 125.769 36.5609 125.049 35.1505C124.329 33.7673 123.982 32.1129 123.982 30.2415V18.8776Z"
+              fill="#434760"
+            />
+            <path
+              d="M73.6264 51.6404H72.4262V54.1899H71.8394V48.196H73.6264C74.9866 48.196 75.6267 48.9283 75.6267 49.9318C75.6267 50.881 75.0133 51.6404 73.6264 51.6404ZM73.6264 51.1251C74.6132 51.1251 75.0133 50.6641 75.0133 49.9318C75.0133 49.1724 74.6132 48.7113 73.6264 48.7113H72.4262V51.1251H73.6264Z"
+              fill="#434760"
+            />
+            <path
+              d="M79.1207 54.2441C77.8138 54.2441 76.827 53.322 76.827 51.8303C76.827 50.3386 77.8405 49.4165 79.1207 49.4165C80.4276 49.4165 81.4144 50.3386 81.4144 51.8303C81.4411 53.322 80.4276 54.2441 79.1207 54.2441ZM79.1207 53.7288C80.0009 53.7288 80.8277 53.1322 80.8277 51.8303C80.8277 50.5556 80.0009 49.9318 79.1207 49.9318C78.2406 49.9318 77.4137 50.5285 77.4137 51.8303C77.4404 53.1322 78.2406 53.7288 79.1207 53.7288Z"
+              fill="#434760"
+            />
+            <path
+              d="M83.6282 54.1899H83.0415V49.4979H83.6282V50.3386C83.8683 49.7691 84.4017 49.4165 85.2019 49.4165V50.0403H85.0418C84.2683 50.0403 83.6282 50.3929 83.6282 51.5591V54.1899Z"
+              fill="#434760"
+            />
+            <path
+              d="M86.7754 50.0131H86.1353V49.4978H86.7754V48.3316H87.3622V49.4978H88.6157V50.0131H87.3622V52.9151C87.3622 53.4847 87.5489 53.6745 88.0823 53.6745H88.6157V54.1898H87.9756C87.1755 54.1898 86.7487 53.8644 86.7487 52.9151V50.0131H86.7754Z"
+              fill="#434760"
+            />
+            <path
+              d="M92.0564 49.4165C92.9899 49.4165 93.63 49.9318 93.8701 50.5285V49.4979H94.4568V54.1899H93.8701V53.1593C93.6033 53.7559 92.9632 54.2713 92.0297 54.2713C90.7762 54.2713 89.8427 53.322 89.8427 51.8574C89.8427 50.3929 90.7762 49.4165 92.0564 49.4165ZM92.1631 49.9589C91.2029 49.9589 90.4561 50.637 90.4561 51.8303C90.4561 53.0237 91.2029 53.7288 92.1631 53.7288C93.0966 53.7288 93.8701 52.9965 93.8701 51.8303C93.8701 50.6641 93.0966 49.9589 92.1631 49.9589Z"
+              fill="#434760"
+            />
+            <path
+              d="M96.3237 47.8434H96.9105V54.1899H96.3237V47.8434Z"
+              fill="#434760"
+            />
+            <path
+              d="M103.525 49.4164C104.352 49.4164 105.045 49.8775 105.339 50.5013V47.8163H105.925V54.1627H105.339V53.105C105.072 53.7288 104.432 54.217 103.525 54.217C102.271 54.217 101.311 53.2677 101.311 51.8031C101.311 50.3386 102.245 49.4164 103.525 49.4164ZM103.632 49.9589C102.672 49.9589 101.925 50.6369 101.925 51.8303C101.925 53.0236 102.672 53.7288 103.632 53.7288C104.565 53.7288 105.339 52.9965 105.339 51.8303C105.339 50.664 104.565 49.9589 103.632 49.9589Z"
+              fill="#434760"
+            />
+            <path
+              d="M109.819 54.2441C108.513 54.2441 107.526 53.322 107.526 51.8303C107.526 50.3386 108.539 49.4165 109.819 49.4165C111.126 49.4165 112.113 50.3386 112.113 51.8303C112.14 53.322 111.1 54.2441 109.819 54.2441ZM109.819 53.7288C110.7 53.7288 111.526 53.1322 111.526 51.8303C111.526 50.5556 110.7 49.9318 109.819 49.9318C108.939 49.9318 108.112 50.5285 108.112 51.8303C108.112 53.1322 108.939 53.7288 109.819 53.7288Z"
+              fill="#434760"
+            />
+            <path
+              d="M119.155 48.1146C120.462 48.1146 121.448 48.7926 121.875 49.9317H121.182C120.862 49.1452 120.168 48.6299 119.155 48.6299C117.874 48.6299 116.888 49.6063 116.888 51.1793C116.888 52.7524 117.874 53.7016 119.155 53.7016C120.168 53.7016 120.862 53.2134 121.182 52.4269H121.875C121.448 53.566 120.462 54.2169 119.155 54.2169C117.528 54.2169 116.274 52.9693 116.274 51.1522C116.274 49.3893 117.528 48.1146 119.155 48.1146Z"
+              fill="#434760"
+            />
+            <path
+              d="M123.555 47.8434H124.142V54.1899H123.555V47.8434Z"
+              fill="#434760"
+            />
+            <path
+              d="M125.849 48.1689C125.849 47.8977 126.036 47.7349 126.276 47.7349C126.516 47.7349 126.702 47.9248 126.702 48.1689C126.702 48.413 126.516 48.6028 126.276 48.6028C126.036 48.6028 125.849 48.413 125.849 48.1689ZM125.982 49.4978H126.569V54.1899H125.982V49.4978Z"
+              fill="#434760"
+            />
+            <path
+              d="M130.437 54.2441C129.13 54.2441 128.17 53.322 128.17 51.8303C128.17 50.3386 129.103 49.4165 130.437 49.4165C131.797 49.4165 132.624 50.3929 132.624 51.5862C132.624 51.7761 132.624 51.8846 132.597 52.0473H128.783C128.836 53.1593 129.583 53.7288 130.437 53.7288C131.21 53.7288 131.744 53.2949 131.93 52.6711H132.544C132.33 53.5932 131.583 54.2441 130.437 54.2441ZM128.756 51.5862H132.01C132.037 50.5014 131.263 49.9589 130.41 49.9589C129.556 49.9318 128.836 50.5014 128.756 51.5862Z"
+              fill="#434760"
+            />
+            <path
+              d="M137.638 51.5048C137.638 50.4742 137.078 49.9318 136.224 49.9318C135.371 49.9318 134.757 50.4742 134.757 51.6133V54.1628H134.171V49.4707H134.757V50.2572C135.051 49.6606 135.637 49.3622 136.331 49.3622C137.371 49.3622 138.198 50.0131 138.198 51.3963V54.1356H137.638V51.5048Z"
+              fill="#434760"
+            />
+            <path
+              d="M140.225 50.0131H139.585V49.4978H140.225V48.3316H140.812V49.4978H142.065V50.0131H140.812V52.9151C140.812 53.4847 140.998 53.6745 141.532 53.6745H142.065V54.1898H141.425C140.625 54.1898 140.198 53.8644 140.198 52.9151V50.0131H140.225Z"
+              fill="#434760"
+            />
+            <path
+              d="M145.559 54.2441C144.252 54.2441 143.292 53.322 143.292 51.8303C143.292 50.3386 144.226 49.4165 145.559 49.4165C146.919 49.4165 147.746 50.3929 147.746 51.5862C147.746 51.7761 147.746 51.8846 147.72 52.0473H143.906C143.959 53.1593 144.706 53.7288 145.559 53.7288C146.333 53.7288 146.866 53.2949 147.053 52.6711H147.666C147.453 53.5932 146.706 54.2441 145.559 54.2441ZM143.879 51.5862H147.133C147.159 50.5014 146.386 49.9589 145.532 49.9589C144.679 49.9318 143.959 50.5014 143.879 51.5862Z"
+              fill="#434760"
+            />
+            <path
+              d="M35.0865 56.8207H9.02849C6.52138 56.8207 4.20096 55.7901 2.46732 53.9458C0.733677 52.1015 -0.119808 49.6877 0.013549 47.1383L1.50715 19.3386C1.58716 18.091 2.60068 17.0875 3.82756 17.0875H9.10851V21.8338H6.06796L4.70772 47.3824C4.65438 48.6028 5.05445 49.7691 5.88126 50.6641C6.70808 51.5591 7.82828 52.0473 9.02849 52.0473H35.0865C36.2867 52.0473 37.4069 51.5591 38.2337 50.6641C39.0605 49.7691 39.4873 48.6028 39.4072 47.3824L38.047 21.8338H17.51V17.1146H40.2874C41.541 17.1146 42.5545 18.091 42.6078 19.3657L44.1014 47.1654C44.2348 49.7148 43.3546 52.1286 41.6476 53.9729C39.914 55.7901 37.5936 56.8207 35.0865 56.8207Z"
+              fill="url(#paint0_linear_2_3)"
+            />
+            <path
+              d="M33.1928 15.5145V11.3107C33.1928 5.01846 28.0985 -0.0804044 21.9107 0.000960426C15.803 0.109447 10.9488 5.26255 10.9488 11.4734V24.3019V25.4139V28.5329C10.9488 34.8251 16.043 39.924 22.2308 39.8426C28.3386 39.7612 33.1661 34.581 33.1661 28.3702V26.9056V25.7122V23.2713H28.4986V25.7122V26.9056V28.5329C28.4986 32.1129 25.6714 35.015 22.1508 35.0963C18.5501 35.1506 15.5896 32.0858 15.5896 28.4244V25.441V24.329V11.3107C15.5896 7.73062 18.4168 4.82861 21.9374 4.74724C25.538 4.693 28.4986 7.75774 28.4986 11.4192V15.5145H33.1928Z"
+              fill="url(#paint1_linear_2_3)"
+            />
+            <defs>
+              <linearGradient
+                id="paint0_linear_2_3"
+                x1="36.5688"
+                y1="5.96951"
+                x2="8.99834"
+                y2="60.9927"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#0BD375" />
+                <stop offset="1" stop-color="#0E82D8" />
+              </linearGradient>
+              <linearGradient
+                id="paint1_linear_2_3"
+                x1="30.3335"
+                y1="2.84724"
+                x2="2.76298"
+                y2="57.8705"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#0BD375" />
+                <stop offset="1" stop-color="#0E82D8" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <h1>
+          QUAL O NÍVEL DE MATURIDADE DE RELACIONAMENTO
+          <strong>DOS SEUS CLIENTES COM A SUA EMPRESA?</strong>
+        </h1>
+
+        <h2>
+          Chegou a hora de saber o nível de eficiência de gestão da sua empresa
+        </h2>
+      </div>
+    </header>
+
+    <!-- <section>
+      <div class="container">
+        <p class="section-title">
+          Selecione abaixo as opções que fazem parte do processo da gestão do
+          seu negócio:
+        </p>
+
+        <form onsubmit="onSubmit(event)">
+          <div class="options">
+            <div class="option" id="option_1">
+              <label class="option-label" for="checkbox_1">
+                Possui um local onde o cliente consegue acessar as campanhas
+                disponíveis de sua empresa?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="checkbox_1"
+                  id="checkbox_1"
+                  onchange="onChange(event, 'option_1')"
+                />
+
+                <label class="checkbox" for="checkbox_1">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option" id="option_2">
+              <label class="option-label" for="checkbox_2">
+                Possui algum canal para disponibilização de informações dos seus
+                produtos para o cliente? (ficha tecnica, estoque, marca,
+                referência e outras infos gerais)
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="checkbox_2"
+                  id="checkbox_2"
+                  onchange="onChange(event, 'option_2')"
+                />
+
+                <label class="checkbox" for="checkbox_2">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option" id="option_3">
+              <label class="option-label" for="checkbox_3">
+                Sua empresa fornece para seu cliente algum tipo de
+                acompanhamento de solicitações?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="checkbox_3"
+                  id="checkbox_3"
+                  onchange="onChange(event, 'option_3')"
+                />
+
+                <label class="checkbox" for="checkbox_3">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option" id="option_4">
+              <label class="option-label" for="checkbox_4">
+                Possui um portal para os clientes fazerem pedidos?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="checkbox_4"
+                  id="checkbox_4"
+                  onchange="onChange(event, 'option_4')"
+                />
+
+                <label class="checkbox" for="checkbox_4">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option" id="option_5">
+              <label class="option-label" for="checkbox_5">
+                Seu cliente compra mesmos itens com recorrência?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="checkbox_5"
+                  id="checkbox_5"
+                  onchange="onChange(event, 'option_5')"
+                />
+
+                <label class="checkbox" for="checkbox_5">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option" id="option_6">
+              <label class="option-label" for="checkbox_6">
+                Seus executivos tem uma rotina de acompanhamento gerencial de
+                pedidos?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="checkbox_6"
+                  id="checkbox_6"
+                  onchange="onChange(event, 'option_6')"
+                />
+
+                <label class="checkbox" for="checkbox_6">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option" id="option_7">
+              <label class="option-label" for="checkbox_7">
+                Existe algum relatório gerencial para apresentar para seus
+                clientes?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="checkbox_7"
+                  id="checkbox_7"
+                  onchange="onChange(event, 'option_7')"
+                />
+
+                <label class="checkbox" for="checkbox_7">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option" id="option_8">
+              <label class="option-label" for="checkbox_8">
+                Possui acompanhamento do histórico de pedidos dos seus clientes?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="checkbox_8"
+                  id="checkbox_8"
+                  onchange="onChange(event, 'option_8')"
+                />
+
+                <label class="checkbox" for="checkbox_8">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option" id="option_9">
+              <label class="option-label" for="checkbox_9">
+                Consegue analisar a variação e origens dos pedidos / OS's ao
+                longo dos meses?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="checkbox_9"
+                  id="checkbox_9"
+                  onchange="onChange(event, 'option_9')"
+                />
+
+                <label class="checkbox" for="checkbox_9">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option" id="option_10">
+              <label class="option-label" for="checkbox_10">
+                Seu cliente consegue realizar a alteração do pedido emitido via
+                Portal?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="checkbox_10"
+                  id="checkbox_10"
+                  onchange="onChange(event, 'option_10')"
+                />
+
+                <label class="checkbox" for="checkbox_10">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option" id="option_11">
+              <label class="option-label" for="checkbox_11">
+                Sua empresa possui um aplicativo para centralizar o
+                relacionamento com os clientes?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="checkbox_11"
+                  id="checkbox_11"
+                  onchange="onChange(event, 'option_11')"
+                />
+
+                <label class="checkbox" for="checkbox_11">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit">Finalizar o teste</button>
+        </form>
+      </div>
+    </section> -->
+
+    <section>
+      <div class="container">
+        <p class="section-title">
+          Selecione abaixo as opções que fazem parte do processo da gestão do
+          seu negócio:
+        </p>
+      </div>
+    </section>
+
+    <footer class="container">
+      <img src="code.png" alt="Code Tecnologia" width="160" height="53" />
+      <p>Indra Tech Hub – Av. Uirapuru, 840 – Cidade Jardim – Uberlândia</p>
+    </footer>
+
+    <!-- <div class="overlay">
+      <div class="modal">modal content</div>
+    </div> -->
+
+    <script>
+      function onSubmit(event) {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+        const formProps = Object.fromEntries(formData);
+
+        console.log("formProps", formProps);
+      }
+
+      function onChange(event, option) {
+        const checked = event.target.checked;
+        const element = document.getElementById(option);
+
+        if (checked) element.classList.add("selected");
+        else element.classList.remove("selected");
+      }
+    </script>
+  </body>
+</html>
