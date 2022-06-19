@@ -18,8 +18,8 @@
       :root {
         --font: "Nunito", sans-serif;
 
-        --primary: #204B22;
-        --primary-100: #ECF5ED;
+        --primary: #204b22;
+        --primary-100: #ecf5ed;
 
         --white: #fff;
         --gray-100: #ececec;
@@ -1056,8 +1056,7 @@
           <div class="options">
             <div class="option" id="container_question_1">
               <label class="option-label" for="question_1">
-                Possui um local onde o cliente consegue acessar as campanhas
-                disponíveis de sua empresa?
+                Realizam o apontamento das atividades de campo?
               </label>
 
               <div class="option-check">
@@ -1077,9 +1076,7 @@
 
             <div class="option" id="container_question_2">
               <label class="option-label" for="question_2">
-                Possui algum canal para disponibilização de informações dos seus
-                produtos para o cliente? (ficha tecnica, estoque, marca,
-                referência e outras infos gerais)
+                Realizam o controle de estoque dos insumos utilizados?
               </label>
 
               <div class="option-check">
@@ -1099,8 +1096,8 @@
 
             <div class="option" id="container_question_3">
               <label class="option-label" for="question_3">
-                Sua empresa fornece para seu cliente algum tipo de
-                acompanhamento de solicitações?
+                Realizam controle do consumo de combustível utilizado nas
+                atividades?
               </label>
 
               <div class="option-check">
@@ -1120,7 +1117,7 @@
 
             <div class="option" id="container_question_4">
               <label class="option-label" for="question_4">
-                Possui um portal para os clientes fazerem pedidos?
+                Consideram as horas improdutivas dos funcionários?
               </label>
 
               <div class="option-check">
@@ -1140,7 +1137,7 @@
 
             <div class="option" id="container_question_5">
               <label class="option-label" for="question_5">
-                Seu cliente compra mesmos itens com recorrência?
+                Fazem o acompanhamento de cada etapa de preparo de solo?
               </label>
 
               <div class="option-check">
@@ -1160,8 +1157,7 @@
 
             <div class="option" id="container_question_6">
               <label class="option-label" for="question_6">
-                Seus executivos tem uma rotina de acompanhamento gerencial de
-                pedidos?
+                Conhecem o tamanho/quantidades das áreas produtivas?
               </label>
 
               <div class="option-check">
@@ -1181,8 +1177,7 @@
 
             <div class="option" id="container_question_7">
               <label class="option-label" for="question_7">
-                Existe algum relatório gerencial para apresentar para seus
-                clientes?
+                Conhece as distribuições dos talhões da fazenda?
               </label>
 
               <div class="option-check">
@@ -1202,7 +1197,7 @@
 
             <div class="option" id="container_question_8">
               <label class="option-label" for="question_8">
-                Possui acompanhamento do histórico de pedidos dos seus clientes?
+                Contabilizam custos com atividades não agrícolas?
               </label>
 
               <div class="option-check">
@@ -1222,8 +1217,9 @@
 
             <div class="option" id="container_question_9">
               <label class="option-label" for="question_9">
-                Consegue analisar a variação e origens dos pedidos / OS's ao
-                longo dos meses?
+                As atividades de campo (adubação, pulverização, calagem) quando
+                criadas na fazenda são vinculadas a etapas pré definidas (pré
+                plantio, plantio, tratos culturais)?
               </label>
 
               <div class="option-check">
@@ -1243,8 +1239,8 @@
 
             <div class="option" id="container_question_10">
               <label class="option-label" for="question_10">
-                Seu cliente consegue realizar a alteração do pedido emitido via
-                Portal?
+                Possuem uma agenda das atividades planejadas para o dia, semana
+                ou mês?
               </label>
 
               <div class="option-check">
@@ -1264,8 +1260,8 @@
 
             <div class="option" id="container_question_11">
               <label class="option-label" for="question_11">
-                Sua empresa possui um aplicativo para centralizar o
-                relacionamento com os clientes?
+                Controlam as receitas e saldos dos contratos de venda de cada
+                uma das safras?
               </label>
 
               <div class="option-check">
@@ -1278,6 +1274,129 @@
                 />
 
                 <label class="checkbox" for="question_11">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option" id="container_question_12">
+              <label class="option-label" for="question_12">
+                Analisa o que está acontecendo em cada talhão periodicamente?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="question_12"
+                  id="question_12"
+                  onchange="onCheckboxChange(event, 'container_question_12')"
+                />
+
+                <label class="checkbox" for="question_12">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option" id="container_question_13">
+              <label class="option-label" for="question_13">
+                Gerenciam a alocação das diferentes equipes nas operações do
+                campo?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="question_13"
+                  id="question_13"
+                  onchange="onCheckboxChange(event, 'container_question_13')"
+                />
+
+                <label class="checkbox" for="question_13">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option" id="container_question_14">
+              <label class="option-label" for="question_14">
+                Fazem análise financeira das safras? (planejada x executada,
+                atividades e custos)
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="question_14"
+                  id="question_14"
+                  onchange="onCheckboxChange(event, 'container_question_14')"
+                />
+
+                <label class="checkbox" for="question_14">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option" id="container_question_15">
+              <label class="option-label" for="question_15">
+                Mensuram o custo de uma atividade agrícola envolvendo máquinas,
+                pessoas e produtos?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="question_15"
+                  id="question_15"
+                  onchange="onCheckboxChange(event, 'container_question_15')"
+                />
+
+                <label class="checkbox" for="question_15">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option" id="container_question_16">
+              <label class="option-label" for="question_16">
+                Realizam apuração dos custos diretos e indiretos?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="question_16"
+                  id="question_16"
+                  onchange="onCheckboxChange(event, 'container_question_16')"
+                />
+
+                <label class="checkbox" for="question_16">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option" id="container_question_17">
+              <label class="option-label" for="question_17">
+                Realizam o planejamento da safra antes do inicio da mesma?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="question_17"
+                  id="question_17"
+                  onchange="onCheckboxChange(event, 'container_question_17')"
+                />
+
+                <label class="checkbox" for="question_17">
                   <span></span>
                 </label>
               </div>
@@ -1355,12 +1474,11 @@
             </div>
 
             <p class="question">
-              Possui um local onde o cliente consegue acessar as campanhas
-              disponíveis de sua empresa?
+              Realizam o apontamento das atividades de campo?
             </p>
 
             <p class="consequence">
-              Evita a perda de vendas por ruptura de estoque.
+              Garante a gestão e a integridade das informações.
             </p>
           </div>
 
@@ -1420,12 +1538,12 @@
             </div>
 
             <p class="question">
-              Possui algum canal para disponibilização de informações dos seus
-              produtos para o cliente? (ficha tecnica, estoque, marca,
-              referência e outras infos gerais)
+              Realizam o controle de estoque dos insumos utilizados?
             </p>
 
-            <p class="consequence">Assegura a competitividade no mercado.</p>
+            <p class="consequence">
+              Evita problemas de integridade com o estoque.
+            </p>
           </div>
 
           <div class="result" id="result_question_3">
@@ -1484,11 +1602,13 @@
             </div>
 
             <p class="question">
-              Sua empresa fornece para seu cliente algum tipo de acompanhamento
-              de solicitações?
+              Realizam controle do consumo de combustível utilizado nas
+              atividades?
             </p>
 
-            <p class="consequence">Garante a satisfação do cliente.</p>
+            <p class="consequence">
+              Garante a gestão e a integridade das informações.
+            </p>
           </div>
 
           <div class="result" id="result_question_4">
@@ -1547,10 +1667,12 @@
             </div>
 
             <p class="question">
-              Possui um portal para os clientes fazerem pedidos?
+              Consideram as horas improdutivas dos funcionários?
             </p>
 
-            <p class="consequence">Assegura a competitividade no mercado.</p>
+            <p class="consequence">
+              Impacta diretamente na rentabilidade do negócio.
+            </p>
           </div>
 
           <div class="result" id="result_question_5">
@@ -1609,10 +1731,12 @@
             </div>
 
             <p class="question">
-              Seu cliente compra mesmos itens com recorrência?
+              Fazem o acompanhamento de cada etapa de preparo de solo?
             </p>
 
-            <p class="consequence">Garante a praticidade da recompra.</p>
+            <p class="consequence">
+              Garante as boas práticas para a melhor produtividade.
+            </p>
           </div>
 
           <div class="result" id="result_question_6">
@@ -1671,13 +1795,11 @@
             </div>
 
             <p class="question">
-              Seus executivos tem uma rotina de acompanhamento gerencial de
-              pedidos?
+              Conhecem o tamanho/quantidades das áreas produtivas?
             </p>
 
             <p class="consequence">
-              Você tem uma visão mais clara do atingimento e replanejamento das
-              metas.
+              Garante a gestão e a integridade das informações.
             </p>
           </div>
 
@@ -1736,12 +1858,11 @@
               </div>
             </div>
             <p class="question">
-              Existe algum relatório gerencial para apresentar para seus
-              clientes?
+              Conhece as distribuições dos talhões da fazenda?
             </p>
 
             <p class="consequence">
-              Análise das últimas compras do seu cliente.
+              Garante a gestão e a integridade das informações.
             </p>
           </div>
 
@@ -1801,12 +1922,11 @@
             </div>
 
             <p class="question">
-              Possui acompanhamento do histórico de pedidos dos seus clientes?
+              Contabilizam custos com atividades não agrícolas?
             </p>
 
             <p class="consequence">
-              Você tem uma visão mais clara do atingimento e replanejamento das
-              metas.
+              Impacta diretamente na rentabilidade do negócio.
             </p>
           </div>
 
@@ -1866,8 +1986,9 @@
             </div>
 
             <p class="question">
-              Consegue analisar a variação e origens dos pedidos / OS's ao longo
-              dos meses?
+              As atividades de campo (adubação, pulverização, calagem) quando
+              criadas na fazenda são vinculadas a etapas pré definidas (pré
+              plantio, plantio, tratos culturais)?
             </p>
 
             <p class="consequence">
@@ -1932,11 +2053,14 @@
             </div>
 
             <p class="question">
-              Seu cliente consegue realizar a alteração do pedido emitido via
-              Portal?
+              Possuem uma agenda das atividades planejadas para o dia, semana ou
+              mês?
             </p>
 
-            <p class="consequence">Assegura a competitividade no mercado.</p>
+            <p class="consequence">
+              Você tem uma visão mais clara do atingimento e replanejamento das
+              metas.
+            </p>
           </div>
 
           <div class="result" id="result_question_11">
@@ -1995,8 +2119,397 @@
             </div>
 
             <p class="question">
-              Sua empresa possui um aplicativo para centralizar o relacionamento
-              com os clientes?
+              Controlam as receitas e saldos dos contratos de venda de cada uma
+              das safras?
+            </p>
+
+            <p class="consequence">
+              Impacta diretamente na rentabilidade do negócio.
+            </p>
+          </div>
+
+          <div class="result" id="result_question_12">
+            <div class="icon">
+              <div class="yes">
+                <svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.49988 14.125L12.2499 17.875L18.4999 10.375"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.5 26C20.4036 26 26 20.4036 26 13.5C26 6.59644 20.4036 1 13.5 1C6.59644 1 1 6.59644 1 13.5C1 20.4036 6.59644 26 13.5 26Z"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                  />
+                </svg>
+              </div>
+
+              <div class="no">
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.5 23.75C18.7131 23.75 23.75 18.7131 23.75 12.5C23.75 6.28687 18.7131 1.25 12.5 1.25C6.28687 1.25 1.25 6.28687 1.25 12.5C1.25 18.7131 6.28687 23.75 12.5 23.75ZM12.5 25C19.4037 25 25 19.4037 25 12.5C25 5.59625 19.4037 0 12.5 0C5.59625 0 0 5.59625 0 12.5C0 19.4037 5.59625 25 12.5 25Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 17.3613C7.52163 17.2441 7.45581 17.0851 7.45581 16.9194C7.45581 16.7537 7.52163 16.5947 7.6388 16.4775L16.4776 7.63876C16.5954 7.52491 16.7533 7.46192 16.9172 7.46334C17.0811 7.46477 17.2378 7.5305 17.3537 7.64638C17.4696 7.76226 17.5353 7.91901 17.5367 8.08289C17.5381 8.24676 17.4752 8.40464 17.3613 8.52251L8.52255 17.3613C8.40535 17.4784 8.24641 17.5443 8.08068 17.5443C7.91495 17.5443 7.75601 17.4784 7.6388 17.3613Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 7.63874C7.75601 7.52157 7.91495 7.45575 8.08068 7.45575C8.24641 7.45575 8.40535 7.52157 8.52255 7.63874L17.3613 16.4775C17.4752 16.5954 17.5381 16.7532 17.5367 16.9171C17.5353 17.081 17.4696 17.2377 17.3537 17.3536C17.2378 17.4695 17.0811 17.5352 16.9172 17.5367C16.7533 17.5381 16.5954 17.4751 16.4776 17.3612L7.6388 8.52249C7.52163 8.40529 7.45581 8.24634 7.45581 8.08062C7.45581 7.91489 7.52163 7.75595 7.6388 7.63874Z"
+                    fill="#FF7272"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <p class="question">
+              Analisa o que está acontecendo em cada talhão periodicamente?
+            </p>
+
+            <p class="consequence">
+              Você tem uma visão mais clara do atingimento e replanejamento das
+              metas.
+            </p>
+          </div>
+
+          <div class="result" id="result_question_13">
+            <div class="icon">
+              <div class="yes">
+                <svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.49988 14.125L12.2499 17.875L18.4999 10.375"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.5 26C20.4036 26 26 20.4036 26 13.5C26 6.59644 20.4036 1 13.5 1C6.59644 1 1 6.59644 1 13.5C1 20.4036 6.59644 26 13.5 26Z"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                  />
+                </svg>
+              </div>
+
+              <div class="no">
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.5 23.75C18.7131 23.75 23.75 18.7131 23.75 12.5C23.75 6.28687 18.7131 1.25 12.5 1.25C6.28687 1.25 1.25 6.28687 1.25 12.5C1.25 18.7131 6.28687 23.75 12.5 23.75ZM12.5 25C19.4037 25 25 19.4037 25 12.5C25 5.59625 19.4037 0 12.5 0C5.59625 0 0 5.59625 0 12.5C0 19.4037 5.59625 25 12.5 25Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 17.3613C7.52163 17.2441 7.45581 17.0851 7.45581 16.9194C7.45581 16.7537 7.52163 16.5947 7.6388 16.4775L16.4776 7.63876C16.5954 7.52491 16.7533 7.46192 16.9172 7.46334C17.0811 7.46477 17.2378 7.5305 17.3537 7.64638C17.4696 7.76226 17.5353 7.91901 17.5367 8.08289C17.5381 8.24676 17.4752 8.40464 17.3613 8.52251L8.52255 17.3613C8.40535 17.4784 8.24641 17.5443 8.08068 17.5443C7.91495 17.5443 7.75601 17.4784 7.6388 17.3613Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 7.63874C7.75601 7.52157 7.91495 7.45575 8.08068 7.45575C8.24641 7.45575 8.40535 7.52157 8.52255 7.63874L17.3613 16.4775C17.4752 16.5954 17.5381 16.7532 17.5367 16.9171C17.5353 17.081 17.4696 17.2377 17.3537 17.3536C17.2378 17.4695 17.0811 17.5352 16.9172 17.5367C16.7533 17.5381 16.5954 17.4751 16.4776 17.3612L7.6388 8.52249C7.52163 8.40529 7.45581 8.24634 7.45581 8.08062C7.45581 7.91489 7.52163 7.75595 7.6388 7.63874Z"
+                    fill="#FF7272"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <p class="question">
+              Gerenciam a alocação das diferentes equipes nas operações do
+              campo?
+            </p>
+
+            <p class="consequence">
+              Garante maior comprometimento de todas as pessoas envolvidas na
+              operação de uma empresa para atingimento dos objetivos.
+            </p>
+          </div>
+
+          <div class="result" id="result_question_14">
+            <div class="icon">
+              <div class="yes">
+                <svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.49988 14.125L12.2499 17.875L18.4999 10.375"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.5 26C20.4036 26 26 20.4036 26 13.5C26 6.59644 20.4036 1 13.5 1C6.59644 1 1 6.59644 1 13.5C1 20.4036 6.59644 26 13.5 26Z"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                  />
+                </svg>
+              </div>
+
+              <div class="no">
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.5 23.75C18.7131 23.75 23.75 18.7131 23.75 12.5C23.75 6.28687 18.7131 1.25 12.5 1.25C6.28687 1.25 1.25 6.28687 1.25 12.5C1.25 18.7131 6.28687 23.75 12.5 23.75ZM12.5 25C19.4037 25 25 19.4037 25 12.5C25 5.59625 19.4037 0 12.5 0C5.59625 0 0 5.59625 0 12.5C0 19.4037 5.59625 25 12.5 25Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 17.3613C7.52163 17.2441 7.45581 17.0851 7.45581 16.9194C7.45581 16.7537 7.52163 16.5947 7.6388 16.4775L16.4776 7.63876C16.5954 7.52491 16.7533 7.46192 16.9172 7.46334C17.0811 7.46477 17.2378 7.5305 17.3537 7.64638C17.4696 7.76226 17.5353 7.91901 17.5367 8.08289C17.5381 8.24676 17.4752 8.40464 17.3613 8.52251L8.52255 17.3613C8.40535 17.4784 8.24641 17.5443 8.08068 17.5443C7.91495 17.5443 7.75601 17.4784 7.6388 17.3613Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 7.63874C7.75601 7.52157 7.91495 7.45575 8.08068 7.45575C8.24641 7.45575 8.40535 7.52157 8.52255 7.63874L17.3613 16.4775C17.4752 16.5954 17.5381 16.7532 17.5367 16.9171C17.5353 17.081 17.4696 17.2377 17.3537 17.3536C17.2378 17.4695 17.0811 17.5352 16.9172 17.5367C16.7533 17.5381 16.5954 17.4751 16.4776 17.3612L7.6388 8.52249C7.52163 8.40529 7.45581 8.24634 7.45581 8.08062C7.45581 7.91489 7.52163 7.75595 7.6388 7.63874Z"
+                    fill="#FF7272"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <p class="question">
+              Fazem análise financeira das safras? (planejada x executada,
+              atividades e custos)
+            </p>
+
+            <p class="consequence">
+              Impacta diretamente na rentabilidade do negócio.
+            </p>
+          </div>
+
+          <div class="result" id="result_question_15">
+            <div class="icon">
+              <div class="yes">
+                <svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.49988 14.125L12.2499 17.875L18.4999 10.375"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.5 26C20.4036 26 26 20.4036 26 13.5C26 6.59644 20.4036 1 13.5 1C6.59644 1 1 6.59644 1 13.5C1 20.4036 6.59644 26 13.5 26Z"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                  />
+                </svg>
+              </div>
+
+              <div class="no">
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.5 23.75C18.7131 23.75 23.75 18.7131 23.75 12.5C23.75 6.28687 18.7131 1.25 12.5 1.25C6.28687 1.25 1.25 6.28687 1.25 12.5C1.25 18.7131 6.28687 23.75 12.5 23.75ZM12.5 25C19.4037 25 25 19.4037 25 12.5C25 5.59625 19.4037 0 12.5 0C5.59625 0 0 5.59625 0 12.5C0 19.4037 5.59625 25 12.5 25Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 17.3613C7.52163 17.2441 7.45581 17.0851 7.45581 16.9194C7.45581 16.7537 7.52163 16.5947 7.6388 16.4775L16.4776 7.63876C16.5954 7.52491 16.7533 7.46192 16.9172 7.46334C17.0811 7.46477 17.2378 7.5305 17.3537 7.64638C17.4696 7.76226 17.5353 7.91901 17.5367 8.08289C17.5381 8.24676 17.4752 8.40464 17.3613 8.52251L8.52255 17.3613C8.40535 17.4784 8.24641 17.5443 8.08068 17.5443C7.91495 17.5443 7.75601 17.4784 7.6388 17.3613Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 7.63874C7.75601 7.52157 7.91495 7.45575 8.08068 7.45575C8.24641 7.45575 8.40535 7.52157 8.52255 7.63874L17.3613 16.4775C17.4752 16.5954 17.5381 16.7532 17.5367 16.9171C17.5353 17.081 17.4696 17.2377 17.3537 17.3536C17.2378 17.4695 17.0811 17.5352 16.9172 17.5367C16.7533 17.5381 16.5954 17.4751 16.4776 17.3612L7.6388 8.52249C7.52163 8.40529 7.45581 8.24634 7.45581 8.08062C7.45581 7.91489 7.52163 7.75595 7.6388 7.63874Z"
+                    fill="#FF7272"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <p class="question">
+              Mensuram o custo de uma atividade agrícola envolvendo máquinas,
+              pessoas e produtos?
+            </p>
+
+            <p class="consequence">
+              Impacta diretamente na rentabilidade do negócio.
+            </p>
+          </div>
+
+          <div class="result" id="result_question_16">
+            <div class="icon">
+              <div class="yes">
+                <svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.49988 14.125L12.2499 17.875L18.4999 10.375"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.5 26C20.4036 26 26 20.4036 26 13.5C26 6.59644 20.4036 1 13.5 1C6.59644 1 1 6.59644 1 13.5C1 20.4036 6.59644 26 13.5 26Z"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                  />
+                </svg>
+              </div>
+
+              <div class="no">
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.5 23.75C18.7131 23.75 23.75 18.7131 23.75 12.5C23.75 6.28687 18.7131 1.25 12.5 1.25C6.28687 1.25 1.25 6.28687 1.25 12.5C1.25 18.7131 6.28687 23.75 12.5 23.75ZM12.5 25C19.4037 25 25 19.4037 25 12.5C25 5.59625 19.4037 0 12.5 0C5.59625 0 0 5.59625 0 12.5C0 19.4037 5.59625 25 12.5 25Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 17.3613C7.52163 17.2441 7.45581 17.0851 7.45581 16.9194C7.45581 16.7537 7.52163 16.5947 7.6388 16.4775L16.4776 7.63876C16.5954 7.52491 16.7533 7.46192 16.9172 7.46334C17.0811 7.46477 17.2378 7.5305 17.3537 7.64638C17.4696 7.76226 17.5353 7.91901 17.5367 8.08289C17.5381 8.24676 17.4752 8.40464 17.3613 8.52251L8.52255 17.3613C8.40535 17.4784 8.24641 17.5443 8.08068 17.5443C7.91495 17.5443 7.75601 17.4784 7.6388 17.3613Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 7.63874C7.75601 7.52157 7.91495 7.45575 8.08068 7.45575C8.24641 7.45575 8.40535 7.52157 8.52255 7.63874L17.3613 16.4775C17.4752 16.5954 17.5381 16.7532 17.5367 16.9171C17.5353 17.081 17.4696 17.2377 17.3537 17.3536C17.2378 17.4695 17.0811 17.5352 16.9172 17.5367C16.7533 17.5381 16.5954 17.4751 16.4776 17.3612L7.6388 8.52249C7.52163 8.40529 7.45581 8.24634 7.45581 8.08062C7.45581 7.91489 7.52163 7.75595 7.6388 7.63874Z"
+                    fill="#FF7272"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <p class="question">
+              Realizam apuração dos custos diretos e indiretos?
+            </p>
+
+            <p class="consequence">
+              Impacta diretamente na rentabilidade do negócio.
+            </p>
+          </div>
+
+          <div class="result" id="result_question_17">
+            <div class="icon">
+              <div class="yes">
+                <svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.49988 14.125L12.2499 17.875L18.4999 10.375"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.5 26C20.4036 26 26 20.4036 26 13.5C26 6.59644 20.4036 1 13.5 1C6.59644 1 1 6.59644 1 13.5C1 20.4036 6.59644 26 13.5 26Z"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                  />
+                </svg>
+              </div>
+
+              <div class="no">
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.5 23.75C18.7131 23.75 23.75 18.7131 23.75 12.5C23.75 6.28687 18.7131 1.25 12.5 1.25C6.28687 1.25 1.25 6.28687 1.25 12.5C1.25 18.7131 6.28687 23.75 12.5 23.75ZM12.5 25C19.4037 25 25 19.4037 25 12.5C25 5.59625 19.4037 0 12.5 0C5.59625 0 0 5.59625 0 12.5C0 19.4037 5.59625 25 12.5 25Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 17.3613C7.52163 17.2441 7.45581 17.0851 7.45581 16.9194C7.45581 16.7537 7.52163 16.5947 7.6388 16.4775L16.4776 7.63876C16.5954 7.52491 16.7533 7.46192 16.9172 7.46334C17.0811 7.46477 17.2378 7.5305 17.3537 7.64638C17.4696 7.76226 17.5353 7.91901 17.5367 8.08289C17.5381 8.24676 17.4752 8.40464 17.3613 8.52251L8.52255 17.3613C8.40535 17.4784 8.24641 17.5443 8.08068 17.5443C7.91495 17.5443 7.75601 17.4784 7.6388 17.3613Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 7.63874C7.75601 7.52157 7.91495 7.45575 8.08068 7.45575C8.24641 7.45575 8.40535 7.52157 8.52255 7.63874L17.3613 16.4775C17.4752 16.5954 17.5381 16.7532 17.5367 16.9171C17.5353 17.081 17.4696 17.2377 17.3537 17.3536C17.2378 17.4695 17.0811 17.5352 16.9172 17.5367C16.7533 17.5381 16.5954 17.4751 16.4776 17.3612L7.6388 8.52249C7.52163 8.40529 7.45581 8.24634 7.45581 8.08062C7.45581 7.91489 7.52163 7.75595 7.6388 7.63874Z"
+                    fill="#FF7272"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <p class="question">
+              Realizam o planejamento da safra antes do inicio da mesma?
             </p>
 
             <p class="consequence">Assegura a competitividade no mercado.</p>
