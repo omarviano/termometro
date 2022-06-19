@@ -1,0 +1,2076 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>UDILINK</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Roboto:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --font: "Nunito", sans-serif;
+
+        --primary: #191f59;
+        --primary-100: #f0fbff;
+
+        --white: #fff;
+        --gray-100: #ececec;
+        --gray-150: #e7e7e7;
+        --gray-300: #d9d9d9;
+        --gray-600: #9b9b9b;
+        --gray-650: #969696;
+        --gray-700: #6a6a6a;
+        --blue-700: #434760;
+        --black: #000;
+
+        --danger: #ff7272;
+        --warn: #ffb000;
+        --ok: #0cc28a;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      @media (max-width: 1080px) {
+        html {
+          font-size: 93.75%;
+        }
+      }
+
+      @media (max-width: 720px) {
+        html {
+          font-size: 87.5%;
+        }
+      }
+
+      body,
+      input,
+      textarea,
+      select,
+      button {
+        font: 400 1rem var(--font);
+        font-display: optional;
+        color: var(--black);
+      }
+
+      button {
+        cursor: pointer;
+        outline: none;
+        border: none;
+      }
+
+      body {
+        background-color: var(--white);
+      }
+
+      .container {
+        position: relative;
+        max-width: 1440px;
+        margin: auto;
+      }
+
+      header {
+        position: relative;
+        padding: 78px 6% 68px;
+        background-color: var(--primary-100);
+        min-height: 325px;
+      }
+
+      .logo {
+        margin-bottom: 28px;
+      }
+
+      h1 {
+        font-size: 22px;
+        max-width: 578px;
+        font-weight: 400;
+      }
+
+      h2 {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--primary);
+        margin-top: 10px;
+      }
+
+      button {
+        font-weight: 800;
+        font-size: 20px;
+        color: var(--white);
+        background-color: var(--primary);
+        padding: 16px;
+        border-radius: 12px;
+        transition: filter 0.25s;
+      }
+
+      button:hover,
+      button:focus {
+        filter: brightness(0.915);
+      }
+
+      .results-info {
+        display: none;
+      }
+
+      .results-info .result-title {
+        font-weight: 700;
+        font-size: 22px;
+      }
+
+      .results-info .result-text {
+        font-weight: 500;
+        font-size: 16px;
+        color: var(--blue-700);
+        max-width: 495px;
+        margin-top: 17px;
+      }
+
+      .thermometer {
+        position: absolute;
+        right: 14%;
+        top: -40%;
+        width: 128px;
+        height: 318px;
+      }
+
+      /* Animações SVG */
+      svg .icon-1 {
+        fill: transparent;
+        -webkit-transition: fill 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+        transition: fill 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+      }
+
+      svg.active .icon-1 {
+        fill: rgb(255, 255, 255);
+      }
+
+      svg .icon-2 {
+        fill: transparent;
+        -webkit-transition: fill 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+        transition: fill 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+      }
+
+      svg.active .icon-2 {
+        fill: rgb(0, 0, 0);
+      }
+
+      svg .icon-3 {
+        fill: transparent;
+        -webkit-transition: fill 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+        transition: fill 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+      }
+
+      svg.active .icon-3 {
+        fill: rgb(248, 248, 248);
+      }
+
+      svg .icon-4 {
+        fill: transparent;
+        -webkit-transition: fill 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+        transition: fill 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+      }
+
+      svg.active .icon-4 {
+        fill: rgb(255, 255, 255);
+      }
+
+      svg .icon-5 {
+        fill: transparent;
+        -webkit-transition: fill 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+        transition: fill 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+      }
+
+      .thermometer.empty svg.active .icon-5 {
+        fill: var(--gray-300);
+      }
+
+      .thermometer.bad svg.active .icon-5 {
+        fill: var(--danger);
+      }
+
+      .thermometer.more-or-less svg.active .icon-5 {
+        fill: var(--warn);
+      }
+
+      .thermometer.great svg.active .icon-5 {
+        fill: var(--ok);
+      }
+
+      /* Animações SVG */
+
+      .section-one,
+      .section-two {
+        display: none;
+        padding: 0 6%;
+      }
+
+      .section-one {
+        margin: 42px 0 60px;
+      }
+
+      .section-two {
+        margin: 42px 0 128px;
+      }
+
+      section .section-title {
+        color: var(--gray-600);
+        font-size: 16px;
+      }
+
+      form {
+        margin-top: 23px;
+      }
+
+      form button[type="submit"] {
+        width: 100%;
+      }
+
+      .options {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+
+      .option {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        padding: 20px;
+        box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.05);
+        border-radius: 12px;
+        user-select: none;
+        border: 1px solid transparent;
+        transition: border-color 0.25s;
+      }
+
+      .option-alt {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        gap: 24px;
+      }
+
+      .option .option-check input {
+        display: none;
+      }
+
+      .option .option-check input:checked + label span {
+        width: 15px;
+        height: 15px;
+        border-radius: 2px;
+      }
+
+      .checkbox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 23px;
+        height: 23px;
+        border: 1px solid var(--gray-650);
+        border-radius: 2px;
+        cursor: pointer;
+      }
+
+      .checkbox span {
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background-color: var(--primary);
+        transition: width 0.15s, height 0.15s, border-radius 0.25s;
+      }
+
+      .option.selected {
+        border-color: var(--primary);
+      }
+
+      option .option-label {
+        color: var(--blue-700);
+        font-size: 14px;
+      }
+
+      .if-you {
+        color: var(--black);
+        font-weight: 700;
+        font-size: 14px;
+        margin-top: 26px;
+      }
+
+      .results {
+        margin-top: 2px;
+      }
+
+      .result {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 21px 0;
+      }
+
+      .result + .result {
+        border-top: 1px solid var(--gray-150);
+      }
+
+      .result .icon .no,
+      .result .icon .yes {
+        display: none;
+      }
+
+      .result.yes .icon .yes,
+      .result.no .icon .no {
+        display: block;
+      }
+
+      .result p {
+        font-size: 14px;
+        color: var(--blue-700);
+      }
+
+      .result .question {
+        max-width: 580px;
+        margin-right: auto;
+      }
+
+      .result .consequence {
+        margin-left: 32px;
+        text-align: right;
+      }
+
+      footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding-bottom: 55px;
+      }
+
+      footer p {
+        color: var(--gray-700);
+        font-size: 14px;
+      }
+
+      .overlay {
+        display: none;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        min-height: 100vh;
+        background-color: rgba(0, 0, 0, 0.25);
+      }
+
+      .modal {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        background: var(--white);
+        max-width: 825px;
+        padding: 8%;
+        height: max-content;
+      }
+
+      .loading {
+        margin: 40px auto;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--gray-700);
+        min-height: 60vh;
+      }
+
+      @media (max-width: 820px) {
+        .thermometer {
+          right: 6%;
+        }
+
+        .presentation,
+        .results-info {
+          width: calc(100% - 200px);
+        }
+      }
+
+      @media (max-width: 742px) {
+        .thermometer {
+          top: auto;
+          bottom: -24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <svg
+            width="202"
+            height="61"
+            viewBox="0 0 202 61"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <rect width="202" height="61" fill="url(#pattern0)" />
+            <defs>
+              <pattern
+                id="pattern0"
+                patternContentUnits="objectBoundingBox"
+                width="1"
+                height="1"
+              >
+                <use
+                  xlink:href="#image0_18_1163"
+                  transform="translate(0 -0.00250555) scale(0.00218341 0.0072303)"
+                />
+              </pattern>
+              <image
+                id="image0_18_1163"
+                width="458"
+                height="139"
+                xlink:href="data:image/png;base64,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"
+              />
+            </defs>
+          </svg>
+        </div>
+
+        <div id="presentation">
+          <h1>
+            QUAL O NÍVEL DE MATURIDADE DE RELACIONAMENTO
+            <strong>DOS SEUS CLIENTES COM A SUA EMPRESA?</strong>
+          </h1>
+
+          <h2>
+            Chegou a hora de saber o nível de eficiência de gestão da sua
+            empresa
+          </h2>
+        </div>
+
+        <div id="results_info" class="results-info">
+          <p id="result_title" class="result-title"></p>
+          <p id="result_text" class="result-text"></p>
+        </div>
+
+        <div class="thermometer empty">
+          <svg
+            width="206"
+            height="396"
+            viewBox="0 0 206 396"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g filter="url(#filter0_d_18_949)">
+              <mask
+                id="path-1-outside-1_18_949"
+                maskUnits="userSpaceOnUse"
+                x="39"
+                y="39"
+                width="128"
+                height="318"
+                fill="black"
+              >
+                <rect
+                  fill="white"
+                  x="39"
+                  y="39"
+                  width="128"
+                  height="318"
+                  class="icon-1"
+                ></rect>
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M103 51C93.0589 51 85 59.0589 85 69V245.016C65.1711 252.185 51 271.178 51 293.48C51 321.934 74.0663 345 102.52 345C130.974 345 154.04 321.934 154.04 293.48C154.04 271.539 140.325 252.802 121 245.374V69C121 59.0589 112.941 51 103 51Z"
+                  class="icon-2"
+                ></path>
+              </mask>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M103 51C93.0589 51 85 59.0589 85 69V245.016C65.1711 252.185 51 271.178 51 293.48C51 321.934 74.0663 345 102.52 345C130.974 345 154.04 321.934 154.04 293.48C154.04 271.539 140.325 252.802 121 245.374V69C121 59.0589 112.941 51 103 51Z"
+                fill="#F8F8F8"
+                class="icon-3"
+              ></path>
+              <path
+                d="M85 245.016L89.0803 256.301L97 253.437V245.016H85ZM121 245.374H109V253.617L116.694 256.575L121 245.374ZM97 69C97 65.6863 99.6863 63 103 63V39C86.4315 39 73 52.4314 73 69H97ZM97 245.016V69H73V245.016H97ZM63 293.48C63 276.391 73.8527 261.806 89.0803 256.301L80.9197 233.731C56.4894 242.564 39 265.964 39 293.48H63ZM102.52 333C80.6937 333 63 315.306 63 293.48H39C39 328.561 67.4389 357 102.52 357V333ZM142.04 293.48C142.04 315.306 124.346 333 102.52 333V357C137.601 357 166.04 328.561 166.04 293.48H142.04ZM116.694 256.575C131.538 262.28 142.04 276.669 142.04 293.48H166.04C166.04 266.41 149.112 243.323 125.306 234.173L116.694 256.575ZM109 69V245.374H133V69H109ZM103 63C106.314 63 109 65.6863 109 69H133C133 52.4315 119.569 39 103 39V63Z"
+                fill="white"
+                mask="url(#path-1-outside-1_18_949)"
+                class="icon-4"
+              ></path>
+            </g>
+            <defs>
+              <filter
+                id="filter0_d_18_949"
+                x="0"
+                y="0"
+                width="205.04"
+                height="396"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood
+                  flood-opacity="0"
+                  result="BackgroundImageFix"
+                ></feFlood>
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                ></feColorMatrix>
+                <feOffset></feOffset>
+                <feGaussianBlur stdDeviation="19.5"></feGaussianBlur>
+                <feComposite in2="hardAlpha" operator="out"></feComposite>
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0.711701 0 0 0 0 0.858333 0 0 0 0 0.814344 0 0 0 0.46 0"
+                ></feColorMatrix>
+                <feBlend
+                  mode="normal"
+                  in2="BackgroundImageFix"
+                  result="effect1_dropShadow_18_949"
+                ></feBlend>
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="effect1_dropShadow_18_949"
+                  result="shape"
+                ></feBlend>
+              </filter>
+            </defs>
+          </svg>
+        </div>
+
+        <div class="thermometer bad">
+          <svg
+            width="206"
+            height="396"
+            viewBox="0 0 206 396"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g filter="url(#filter0_d_18_948)">
+              <mask
+                id="path-1-outside-1_18_948"
+                maskUnits="userSpaceOnUse"
+                x="39.04"
+                y="39"
+                width="128"
+                height="318"
+                fill="black"
+              >
+                <rect
+                  fill="white"
+                  x="39.04"
+                  y="39"
+                  width="128"
+                  height="318"
+                  class="icon-1"
+                ></rect>
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M103.04 51C93.0989 51 85.04 59.0589 85.04 69V245.016C65.2111 252.185 51.04 271.178 51.04 293.48C51.04 321.934 74.1063 345 102.56 345C131.014 345 154.08 321.934 154.08 293.48C154.08 271.539 140.365 252.802 121.04 245.374V69C121.04 59.0589 112.981 51 103.04 51Z"
+                  class="icon-2"
+                ></path>
+              </mask>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M103.04 51C93.0989 51 85.04 59.0589 85.04 69V245.016C65.2111 252.185 51.04 271.178 51.04 293.48C51.04 321.934 74.1063 345 102.56 345C131.014 345 154.08 321.934 154.08 293.48C154.08 271.539 140.365 252.802 121.04 245.374V69C121.04 59.0589 112.981 51 103.04 51Z"
+                fill="#F8F8F8"
+                class="icon-3"
+              ></path>
+              <path
+                d="M85.04 245.016L89.1204 256.301L97.04 253.437V245.016H85.04ZM121.04 245.374H109.04V253.617L116.734 256.575L121.04 245.374ZM97.04 69C97.04 65.6863 99.7263 63 103.04 63V39C86.4715 39 73.04 52.4314 73.04 69H97.04ZM97.04 245.016V69H73.04V245.016H97.04ZM63.04 293.48C63.04 276.391 73.8927 261.806 89.1204 256.301L80.9597 233.731C56.5294 242.564 39.04 265.964 39.04 293.48H63.04ZM102.56 333C80.7337 333 63.04 315.306 63.04 293.48H39.04C39.04 328.561 67.4789 357 102.56 357V333ZM142.08 293.48C142.08 315.306 124.386 333 102.56 333V357C137.641 357 166.08 328.561 166.08 293.48H142.08ZM116.734 256.575C131.578 262.28 142.08 276.669 142.08 293.48H166.08C166.08 266.41 149.152 243.323 125.346 234.173L116.734 256.575ZM109.04 69V245.374H133.04V69H109.04ZM103.04 63C106.354 63 109.04 65.6863 109.04 69H133.04C133.04 52.4315 119.609 39 103.04 39V63Z"
+                fill="white"
+                mask="url(#path-1-outside-1_18_948)"
+                class="icon-4"
+              ></path>
+            </g>
+            <g filter="url(#filter1_d_18_948)">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M121.04 204H85.04V245.016C65.2111 252.185 51.04 271.178 51.04 293.48C51.04 321.934 74.1063 345 102.56 345C131.014 345 154.08 321.934 154.08 293.48C154.08 271.539 140.365 252.802 121.04 245.374V204Z"
+                fill="#FF7272"
+                class="icon-5"
+              ></path>
+            </g>
+            <defs>
+              <filter
+                id="filter0_d_18_948"
+                x="0.0400391"
+                y="0"
+                width="205.04"
+                height="396"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood
+                  flood-opacity="0"
+                  result="BackgroundImageFix"
+                ></feFlood>
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                ></feColorMatrix>
+                <feOffset></feOffset>
+                <feGaussianBlur stdDeviation="19.5"></feGaussianBlur>
+                <feComposite in2="hardAlpha" operator="out"></feComposite>
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0.711701 0 0 0 0 0.858333 0 0 0 0 0.814344 0 0 0 0.46 0"
+                ></feColorMatrix>
+                <feBlend
+                  mode="normal"
+                  in2="BackgroundImageFix"
+                  result="effect1_dropShadow_18_948"
+                ></feBlend>
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="effect1_dropShadow_18_948"
+                  result="shape"
+                ></feBlend>
+              </filter>
+              <filter
+                id="filter1_d_18_948"
+                x="12.04"
+                y="165"
+                width="181.04"
+                height="219"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood
+                  flood-opacity="0"
+                  result="BackgroundImageFix"
+                ></feFlood>
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                ></feColorMatrix>
+                <feOffset></feOffset>
+                <feGaussianBlur stdDeviation="19.5"></feGaussianBlur>
+                <feComposite in2="hardAlpha" operator="out"></feComposite>
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0.711701 0 0 0 0 0.858333 0 0 0 0 0.814344 0 0 0 0.46 0"
+                ></feColorMatrix>
+                <feBlend
+                  mode="normal"
+                  in2="BackgroundImageFix"
+                  result="effect1_dropShadow_18_948"
+                ></feBlend>
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="effect1_dropShadow_18_948"
+                  result="shape"
+                ></feBlend>
+              </filter>
+            </defs>
+          </svg>
+        </div>
+
+        <div class="thermometer more-or-less">
+          <svg
+            width="206"
+            height="396"
+            viewBox="0 0 206 396"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g filter="url(#filter0_d_18_947)">
+              <mask
+                id="path-1-outside-1_18_947"
+                maskUnits="userSpaceOnUse"
+                x="39.0801"
+                y="39"
+                width="128"
+                height="318"
+                fill="black"
+              >
+                <rect
+                  fill="white"
+                  x="39.0801"
+                  y="39"
+                  width="128"
+                  height="318"
+                  class="icon-1"
+                ></rect>
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M103.08 51C93.139 51 85.0801 59.0589 85.0801 69V245.016C65.2511 252.185 51.0801 271.178 51.0801 293.48C51.0801 321.934 74.1464 345 102.6 345C131.054 345 154.12 321.934 154.12 293.48C154.12 271.539 140.405 252.802 121.08 245.374V69C121.08 59.0589 113.021 51 103.08 51Z"
+                  class="icon-2"
+                ></path>
+              </mask>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M103.08 51C93.139 51 85.0801 59.0589 85.0801 69V245.016C65.2511 252.185 51.0801 271.178 51.0801 293.48C51.0801 321.934 74.1464 345 102.6 345C131.054 345 154.12 321.934 154.12 293.48C154.12 271.539 140.405 252.802 121.08 245.374V69C121.08 59.0589 113.021 51 103.08 51Z"
+                fill="#F8F8F8"
+                class="icon-3"
+              ></path>
+              <path
+                d="M85.0801 245.016L89.1604 256.301L97.0801 253.437V245.016H85.0801ZM121.08 245.374H109.08V253.617L116.775 256.575L121.08 245.374ZM97.0801 69C97.0801 65.6863 99.7664 63 103.08 63V39C86.5115 39 73.0801 52.4314 73.0801 69H97.0801ZM97.0801 245.016V69H73.0801V245.016H97.0801ZM63.0801 293.48C63.0801 276.391 73.9328 261.806 89.1604 256.301L80.9998 233.731C56.5695 242.564 39.0801 265.964 39.0801 293.48H63.0801ZM102.6 333C80.7738 333 63.0801 315.306 63.0801 293.48H39.0801C39.0801 328.561 67.519 357 102.6 357V333ZM142.12 293.48C142.12 315.306 124.426 333 102.6 333V357C137.681 357 166.12 328.561 166.12 293.48H142.12ZM116.775 256.575C131.618 262.28 142.12 276.669 142.12 293.48H166.12C166.12 266.41 149.192 243.323 125.386 234.173L116.775 256.575ZM109.08 69V245.374H133.08V69H109.08ZM103.08 63C106.394 63 109.08 65.6863 109.08 69H133.08C133.08 52.4315 119.649 39 103.08 39V63Z"
+                fill="white"
+                mask="url(#path-1-outside-1_18_947)"
+                class="icon-4"
+              ></path>
+            </g>
+            <g filter="url(#filter1_d_18_947)">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M121.08 143H85.0801V245.016C65.2511 252.185 51.0801 271.178 51.0801 293.48C51.0801 321.934 74.1464 345 102.6 345C131.054 345 154.12 321.934 154.12 293.48C154.12 271.539 140.405 252.802 121.08 245.374V143Z"
+                fill="#FFB000"
+                class="icon-5"
+              ></path>
+            </g>
+            <defs>
+              <filter
+                id="filter0_d_18_947"
+                x="0.0800781"
+                y="0"
+                width="205.04"
+                height="396"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood
+                  flood-opacity="0"
+                  result="BackgroundImageFix"
+                ></feFlood>
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                ></feColorMatrix>
+                <feOffset></feOffset>
+                <feGaussianBlur stdDeviation="19.5"></feGaussianBlur>
+                <feComposite in2="hardAlpha" operator="out"></feComposite>
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0.711701 0 0 0 0 0.858333 0 0 0 0 0.814344 0 0 0 0.46 0"
+                ></feColorMatrix>
+                <feBlend
+                  mode="normal"
+                  in2="BackgroundImageFix"
+                  result="effect1_dropShadow_18_947"
+                ></feBlend>
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="effect1_dropShadow_18_947"
+                  result="shape"
+                ></feBlend>
+              </filter>
+              <filter
+                id="filter1_d_18_947"
+                x="12.0801"
+                y="104"
+                width="181.04"
+                height="280"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood
+                  flood-opacity="0"
+                  result="BackgroundImageFix"
+                ></feFlood>
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                ></feColorMatrix>
+                <feOffset></feOffset>
+                <feGaussianBlur stdDeviation="19.5"></feGaussianBlur>
+                <feComposite in2="hardAlpha" operator="out"></feComposite>
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0.711701 0 0 0 0 0.858333 0 0 0 0 0.814344 0 0 0 0.46 0"
+                ></feColorMatrix>
+                <feBlend
+                  mode="normal"
+                  in2="BackgroundImageFix"
+                  result="effect1_dropShadow_18_947"
+                ></feBlend>
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="effect1_dropShadow_18_947"
+                  result="shape"
+                ></feBlend>
+              </filter>
+            </defs>
+          </svg>
+        </div>
+
+        <div class="thermometer great">
+          <svg
+            width="206"
+            height="396"
+            viewBox="0 0 206 396"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g filter="url(#filter0_d_18_946)">
+              <mask
+                id="path-1-outside-1_18_946"
+                maskUnits="userSpaceOnUse"
+                x="39.1201"
+                y="39"
+                width="128"
+                height="318"
+                fill="black"
+              >
+                <rect
+                  fill="white"
+                  x="39.1201"
+                  y="39"
+                  width="128"
+                  height="318"
+                  class="icon-1"
+                ></rect>
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M103.12 51C93.179 51 85.1201 59.0589 85.1201 69V245.016C65.2912 252.185 51.1201 271.178 51.1201 293.48C51.1201 321.934 74.1864 345 102.64 345C131.094 345 154.16 321.934 154.16 293.48C154.16 271.539 140.445 252.802 121.12 245.374V69C121.12 59.0589 113.061 51 103.12 51Z"
+                  class="icon-2"
+                ></path>
+              </mask>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M103.12 51C93.179 51 85.1201 59.0589 85.1201 69V245.016C65.2912 252.185 51.1201 271.178 51.1201 293.48C51.1201 321.934 74.1864 345 102.64 345C131.094 345 154.16 321.934 154.16 293.48C154.16 271.539 140.445 252.802 121.12 245.374V69C121.12 59.0589 113.061 51 103.12 51Z"
+                fill="#F8F8F8"
+                class="icon-3"
+              ></path>
+              <path
+                d="M85.1201 245.016L89.2004 256.301L97.1201 253.437V245.016H85.1201ZM121.12 245.374H109.12V253.617L116.815 256.575L121.12 245.374ZM97.1201 69C97.1201 65.6863 99.8064 63 103.12 63V39C86.5516 39 73.1201 52.4314 73.1201 69H97.1201ZM97.1201 245.016V69H73.1201V245.016H97.1201ZM63.1201 293.48C63.1201 276.391 73.9728 261.806 89.2004 256.301L81.0398 233.731C56.6095 242.564 39.1201 265.964 39.1201 293.48H63.1201ZM102.64 333C80.8138 333 63.1201 315.306 63.1201 293.48H39.1201C39.1201 328.561 67.559 357 102.64 357V333ZM142.16 293.48C142.16 315.306 124.466 333 102.64 333V357C137.721 357 166.16 328.561 166.16 293.48H142.16ZM116.815 256.575C131.658 262.28 142.16 276.669 142.16 293.48H166.16C166.16 266.41 149.232 243.323 125.426 234.173L116.815 256.575ZM109.12 69V245.374H133.12V69H109.12ZM103.12 63C106.434 63 109.12 65.6863 109.12 69H133.12C133.12 52.4315 119.689 39 103.12 39V63Z"
+                fill="white"
+                mask="url(#path-1-outside-1_18_946)"
+                class="icon-4"
+              ></path>
+            </g>
+            <g filter="url(#filter1_d_18_946)">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M103.12 51C93.179 51 85.1201 59.0589 85.1201 69V245.016C65.2912 252.185 51.1201 271.178 51.1201 293.48C51.1201 321.934 74.1864 345 102.64 345C131.094 345 154.16 321.934 154.16 293.48C154.16 271.539 140.445 252.802 121.12 245.374V69C121.12 59.0589 113.061 51 103.12 51Z"
+                fill="#0CC28A"
+                class="icon-5"
+              ></path>
+            </g>
+            <defs>
+              <filter
+                id="filter0_d_18_946"
+                x="0.120117"
+                y="0"
+                width="205.04"
+                height="396"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood
+                  flood-opacity="0"
+                  result="BackgroundImageFix"
+                ></feFlood>
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                ></feColorMatrix>
+                <feOffset></feOffset>
+                <feGaussianBlur stdDeviation="19.5"></feGaussianBlur>
+                <feComposite in2="hardAlpha" operator="out"></feComposite>
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0.711701 0 0 0 0 0.858333 0 0 0 0 0.814344 0 0 0 0.46 0"
+                ></feColorMatrix>
+                <feBlend
+                  mode="normal"
+                  in2="BackgroundImageFix"
+                  result="effect1_dropShadow_18_946"
+                ></feBlend>
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="effect1_dropShadow_18_946"
+                  result="shape"
+                ></feBlend>
+              </filter>
+              <filter
+                id="filter1_d_18_946"
+                x="12.1201"
+                y="12"
+                width="181.04"
+                height="372"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood
+                  flood-opacity="0"
+                  result="BackgroundImageFix"
+                ></feFlood>
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                ></feColorMatrix>
+                <feOffset></feOffset>
+                <feGaussianBlur stdDeviation="19.5"></feGaussianBlur>
+                <feComposite in2="hardAlpha" operator="out"></feComposite>
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0.711701 0 0 0 0 0.858333 0 0 0 0 0.814344 0 0 0 0.46 0"
+                ></feColorMatrix>
+                <feBlend
+                  mode="normal"
+                  in2="BackgroundImageFix"
+                  result="effect1_dropShadow_18_946"
+                ></feBlend>
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="effect1_dropShadow_18_946"
+                  result="shape"
+                ></feBlend>
+              </filter>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <div id="loading" class="loading">Carregando...</div>
+
+    <section id="section-one" class="section-one">
+      <div class="container">
+        <p class="section-title">
+          Selecione abaixo as opções que fazem parte do processo da gestão do
+          seu negócio:
+        </p>
+
+        <form onsubmit="onSubmit(event)">
+          <div class="options">
+            <div class="option option-alt" id="container_question_1">
+              <label class="option-label" for="question_1">
+                Possui um local onde o cliente consegue acessar as campanhas
+                disponíveis de sua empresa?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="question_1"
+                  id="question_1"
+                  onchange="onCheckboxChange(event, 'container_question_1')"
+                />
+
+                <label class="checkbox" for="question_1">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option option-alt" id="container_question_2">
+              <label class="option-label" for="question_2">
+                Possui algum canal para disponibilização de informações dos seus
+                produtos para o cliente? (ficha tecnica, estoque, marca,
+                referência e outras infos gerais)
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="question_2"
+                  id="question_2"
+                  onchange="onCheckboxChange(event, 'container_question_2')"
+                />
+
+                <label class="checkbox" for="question_2">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option option-alt" id="container_question_3">
+              <label class="option-label" for="question_3">
+                Sua empresa fornece para seu cliente algum tipo de
+                acompanhamento de solicitações?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="question_3"
+                  id="question_3"
+                  onchange="onCheckboxChange(event, 'container_question_3')"
+                />
+
+                <label class="checkbox" for="question_3">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option option-alt" id="container_question_4">
+              <label class="option-label" for="question_4">
+                Possui um portal para os clientes fazerem pedidos?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="question_4"
+                  id="question_4"
+                  onchange="onCheckboxChange(event, 'container_question_4')"
+                />
+
+                <label class="checkbox" for="question_4">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option option-alt" id="container_question_5">
+              <label class="option-label" for="question_5">
+                Seu cliente compra mesmos itens com recorrência?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="question_5"
+                  id="question_5"
+                  onchange="onCheckboxChange(event, 'container_question_5')"
+                />
+
+                <label class="checkbox" for="question_5">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option option-alt" id="container_question_6">
+              <label class="option-label" for="question_6">
+                Seus executivos tem uma rotina de acompanhamento gerencial de
+                pedidos?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="question_6"
+                  id="question_6"
+                  onchange="onCheckboxChange(event, 'container_question_6')"
+                />
+
+                <label class="checkbox" for="question_6">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option option-alt" id="container_question_7">
+              <label class="option-label" for="question_7">
+                Existe algum relatório gerencial para apresentar para seus
+                clientes?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="question_7"
+                  id="question_7"
+                  onchange="onCheckboxChange(event, 'container_question_7')"
+                />
+
+                <label class="checkbox" for="question_7">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option option-alt" id="container_question_8">
+              <label class="option-label" for="question_8">
+                Possui acompanhamento do histórico de pedidos dos seus clientes?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="question_8"
+                  id="question_8"
+                  onchange="onCheckboxChange(event, 'container_question_8')"
+                />
+
+                <label class="checkbox" for="question_8">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option option-alt" id="container_question_9">
+              <label class="option-label" for="question_9">
+                Consegue analisar a variação e origens dos pedidos / OS's ao
+                longo dos meses?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="question_9"
+                  id="question_9"
+                  onchange="onCheckboxChange(event, 'container_question_9')"
+                />
+
+                <label class="checkbox" for="question_9">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option option-alt" id="container_question_10">
+              <label class="option-label" for="question_10">
+                Seu cliente consegue realizar a alteração do pedido emitido via
+                Portal?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="question_10"
+                  id="question_10"
+                  onchange="onCheckboxChange(event, 'container_question_10')"
+                />
+
+                <label class="checkbox" for="question_10">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="option option-alt" id="container_question_11">
+              <label class="option-label" for="question_11">
+                Sua empresa possui um aplicativo para centralizar o
+                relacionamento com os clientes?
+              </label>
+
+              <div class="option-check">
+                <input
+                  type="checkbox"
+                  value="true"
+                  name="question_11"
+                  id="question_11"
+                  onchange="onCheckboxChange(event, 'container_question_11')"
+                />
+
+                <label class="checkbox" for="question_11">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit">Finalizar o teste</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="section-two" class="section-two">
+      <div class="container">
+        <p class="section-title">
+          Selecione abaixo as opções que fazem parte do processo da gestão do
+          seu negócio:
+        </p>
+
+        <p class="if-you">SE VOCÊ...</p>
+
+        <div class="results">
+          <div class="result" id="result_question_1">
+            <div class="icon">
+              <div class="yes">
+                <svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.49988 14.125L12.2499 17.875L18.4999 10.375"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.5 26C20.4036 26 26 20.4036 26 13.5C26 6.59644 20.4036 1 13.5 1C6.59644 1 1 6.59644 1 13.5C1 20.4036 6.59644 26 13.5 26Z"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                  />
+                </svg>
+              </div>
+
+              <div class="no">
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.5 23.75C18.7131 23.75 23.75 18.7131 23.75 12.5C23.75 6.28687 18.7131 1.25 12.5 1.25C6.28687 1.25 1.25 6.28687 1.25 12.5C1.25 18.7131 6.28687 23.75 12.5 23.75ZM12.5 25C19.4037 25 25 19.4037 25 12.5C25 5.59625 19.4037 0 12.5 0C5.59625 0 0 5.59625 0 12.5C0 19.4037 5.59625 25 12.5 25Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 17.3613C7.52163 17.2441 7.45581 17.0851 7.45581 16.9194C7.45581 16.7537 7.52163 16.5947 7.6388 16.4775L16.4776 7.63876C16.5954 7.52491 16.7533 7.46192 16.9172 7.46334C17.0811 7.46477 17.2378 7.5305 17.3537 7.64638C17.4696 7.76226 17.5353 7.91901 17.5367 8.08289C17.5381 8.24676 17.4752 8.40464 17.3613 8.52251L8.52255 17.3613C8.40535 17.4784 8.24641 17.5443 8.08068 17.5443C7.91495 17.5443 7.75601 17.4784 7.6388 17.3613Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 7.63874C7.75601 7.52157 7.91495 7.45575 8.08068 7.45575C8.24641 7.45575 8.40535 7.52157 8.52255 7.63874L17.3613 16.4775C17.4752 16.5954 17.5381 16.7532 17.5367 16.9171C17.5353 17.081 17.4696 17.2377 17.3537 17.3536C17.2378 17.4695 17.0811 17.5352 16.9172 17.5367C16.7533 17.5381 16.5954 17.4751 16.4776 17.3612L7.6388 8.52249C7.52163 8.40529 7.45581 8.24634 7.45581 8.08062C7.45581 7.91489 7.52163 7.75595 7.6388 7.63874Z"
+                    fill="#FF7272"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <p class="question">
+              Possui um local onde o cliente consegue acessar as campanhas
+              disponíveis de sua empresa?
+            </p>
+
+            <p class="consequence">
+              Evita a perda de vendas por ruptura de estoque.
+            </p>
+          </div>
+
+          <div class="result" id="result_question_2">
+            <div class="icon">
+              <div class="yes">
+                <svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.49988 14.125L12.2499 17.875L18.4999 10.375"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.5 26C20.4036 26 26 20.4036 26 13.5C26 6.59644 20.4036 1 13.5 1C6.59644 1 1 6.59644 1 13.5C1 20.4036 6.59644 26 13.5 26Z"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                  />
+                </svg>
+              </div>
+
+              <div class="no">
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.5 23.75C18.7131 23.75 23.75 18.7131 23.75 12.5C23.75 6.28687 18.7131 1.25 12.5 1.25C6.28687 1.25 1.25 6.28687 1.25 12.5C1.25 18.7131 6.28687 23.75 12.5 23.75ZM12.5 25C19.4037 25 25 19.4037 25 12.5C25 5.59625 19.4037 0 12.5 0C5.59625 0 0 5.59625 0 12.5C0 19.4037 5.59625 25 12.5 25Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 17.3613C7.52163 17.2441 7.45581 17.0851 7.45581 16.9194C7.45581 16.7537 7.52163 16.5947 7.6388 16.4775L16.4776 7.63876C16.5954 7.52491 16.7533 7.46192 16.9172 7.46334C17.0811 7.46477 17.2378 7.5305 17.3537 7.64638C17.4696 7.76226 17.5353 7.91901 17.5367 8.08289C17.5381 8.24676 17.4752 8.40464 17.3613 8.52251L8.52255 17.3613C8.40535 17.4784 8.24641 17.5443 8.08068 17.5443C7.91495 17.5443 7.75601 17.4784 7.6388 17.3613Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 7.63874C7.75601 7.52157 7.91495 7.45575 8.08068 7.45575C8.24641 7.45575 8.40535 7.52157 8.52255 7.63874L17.3613 16.4775C17.4752 16.5954 17.5381 16.7532 17.5367 16.9171C17.5353 17.081 17.4696 17.2377 17.3537 17.3536C17.2378 17.4695 17.0811 17.5352 16.9172 17.5367C16.7533 17.5381 16.5954 17.4751 16.4776 17.3612L7.6388 8.52249C7.52163 8.40529 7.45581 8.24634 7.45581 8.08062C7.45581 7.91489 7.52163 7.75595 7.6388 7.63874Z"
+                    fill="#FF7272"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <p class="question">
+              Possui algum canal para disponibilização de informações dos seus
+              produtos para o cliente? (ficha tecnica, estoque, marca,
+              referência e outras infos gerais)
+            </p>
+
+            <p class="consequence">Assegura a competitividade no mercado.</p>
+          </div>
+
+          <div class="result" id="result_question_3">
+            <div class="icon">
+              <div class="yes">
+                <svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.49988 14.125L12.2499 17.875L18.4999 10.375"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.5 26C20.4036 26 26 20.4036 26 13.5C26 6.59644 20.4036 1 13.5 1C6.59644 1 1 6.59644 1 13.5C1 20.4036 6.59644 26 13.5 26Z"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                  />
+                </svg>
+              </div>
+
+              <div class="no">
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.5 23.75C18.7131 23.75 23.75 18.7131 23.75 12.5C23.75 6.28687 18.7131 1.25 12.5 1.25C6.28687 1.25 1.25 6.28687 1.25 12.5C1.25 18.7131 6.28687 23.75 12.5 23.75ZM12.5 25C19.4037 25 25 19.4037 25 12.5C25 5.59625 19.4037 0 12.5 0C5.59625 0 0 5.59625 0 12.5C0 19.4037 5.59625 25 12.5 25Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 17.3613C7.52163 17.2441 7.45581 17.0851 7.45581 16.9194C7.45581 16.7537 7.52163 16.5947 7.6388 16.4775L16.4776 7.63876C16.5954 7.52491 16.7533 7.46192 16.9172 7.46334C17.0811 7.46477 17.2378 7.5305 17.3537 7.64638C17.4696 7.76226 17.5353 7.91901 17.5367 8.08289C17.5381 8.24676 17.4752 8.40464 17.3613 8.52251L8.52255 17.3613C8.40535 17.4784 8.24641 17.5443 8.08068 17.5443C7.91495 17.5443 7.75601 17.4784 7.6388 17.3613Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 7.63874C7.75601 7.52157 7.91495 7.45575 8.08068 7.45575C8.24641 7.45575 8.40535 7.52157 8.52255 7.63874L17.3613 16.4775C17.4752 16.5954 17.5381 16.7532 17.5367 16.9171C17.5353 17.081 17.4696 17.2377 17.3537 17.3536C17.2378 17.4695 17.0811 17.5352 16.9172 17.5367C16.7533 17.5381 16.5954 17.4751 16.4776 17.3612L7.6388 8.52249C7.52163 8.40529 7.45581 8.24634 7.45581 8.08062C7.45581 7.91489 7.52163 7.75595 7.6388 7.63874Z"
+                    fill="#FF7272"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <p class="question">
+              Sua empresa fornece para seu cliente algum tipo de acompanhamento
+              de solicitações?
+            </p>
+
+            <p class="consequence">Garante a satisfação do cliente.</p>
+          </div>
+
+          <div class="result" id="result_question_4">
+            <div class="icon">
+              <div class="yes">
+                <svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.49988 14.125L12.2499 17.875L18.4999 10.375"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.5 26C20.4036 26 26 20.4036 26 13.5C26 6.59644 20.4036 1 13.5 1C6.59644 1 1 6.59644 1 13.5C1 20.4036 6.59644 26 13.5 26Z"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                  />
+                </svg>
+              </div>
+
+              <div class="no">
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.5 23.75C18.7131 23.75 23.75 18.7131 23.75 12.5C23.75 6.28687 18.7131 1.25 12.5 1.25C6.28687 1.25 1.25 6.28687 1.25 12.5C1.25 18.7131 6.28687 23.75 12.5 23.75ZM12.5 25C19.4037 25 25 19.4037 25 12.5C25 5.59625 19.4037 0 12.5 0C5.59625 0 0 5.59625 0 12.5C0 19.4037 5.59625 25 12.5 25Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 17.3613C7.52163 17.2441 7.45581 17.0851 7.45581 16.9194C7.45581 16.7537 7.52163 16.5947 7.6388 16.4775L16.4776 7.63876C16.5954 7.52491 16.7533 7.46192 16.9172 7.46334C17.0811 7.46477 17.2378 7.5305 17.3537 7.64638C17.4696 7.76226 17.5353 7.91901 17.5367 8.08289C17.5381 8.24676 17.4752 8.40464 17.3613 8.52251L8.52255 17.3613C8.40535 17.4784 8.24641 17.5443 8.08068 17.5443C7.91495 17.5443 7.75601 17.4784 7.6388 17.3613Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 7.63874C7.75601 7.52157 7.91495 7.45575 8.08068 7.45575C8.24641 7.45575 8.40535 7.52157 8.52255 7.63874L17.3613 16.4775C17.4752 16.5954 17.5381 16.7532 17.5367 16.9171C17.5353 17.081 17.4696 17.2377 17.3537 17.3536C17.2378 17.4695 17.0811 17.5352 16.9172 17.5367C16.7533 17.5381 16.5954 17.4751 16.4776 17.3612L7.6388 8.52249C7.52163 8.40529 7.45581 8.24634 7.45581 8.08062C7.45581 7.91489 7.52163 7.75595 7.6388 7.63874Z"
+                    fill="#FF7272"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <p class="question">
+              Possui um portal para os clientes fazerem pedidos?
+            </p>
+
+            <p class="consequence">Assegura a competitividade no mercado.</p>
+          </div>
+
+          <div class="result" id="result_question_5">
+            <div class="icon">
+              <div class="yes">
+                <svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.49988 14.125L12.2499 17.875L18.4999 10.375"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.5 26C20.4036 26 26 20.4036 26 13.5C26 6.59644 20.4036 1 13.5 1C6.59644 1 1 6.59644 1 13.5C1 20.4036 6.59644 26 13.5 26Z"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                  />
+                </svg>
+              </div>
+
+              <div class="no">
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.5 23.75C18.7131 23.75 23.75 18.7131 23.75 12.5C23.75 6.28687 18.7131 1.25 12.5 1.25C6.28687 1.25 1.25 6.28687 1.25 12.5C1.25 18.7131 6.28687 23.75 12.5 23.75ZM12.5 25C19.4037 25 25 19.4037 25 12.5C25 5.59625 19.4037 0 12.5 0C5.59625 0 0 5.59625 0 12.5C0 19.4037 5.59625 25 12.5 25Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 17.3613C7.52163 17.2441 7.45581 17.0851 7.45581 16.9194C7.45581 16.7537 7.52163 16.5947 7.6388 16.4775L16.4776 7.63876C16.5954 7.52491 16.7533 7.46192 16.9172 7.46334C17.0811 7.46477 17.2378 7.5305 17.3537 7.64638C17.4696 7.76226 17.5353 7.91901 17.5367 8.08289C17.5381 8.24676 17.4752 8.40464 17.3613 8.52251L8.52255 17.3613C8.40535 17.4784 8.24641 17.5443 8.08068 17.5443C7.91495 17.5443 7.75601 17.4784 7.6388 17.3613Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 7.63874C7.75601 7.52157 7.91495 7.45575 8.08068 7.45575C8.24641 7.45575 8.40535 7.52157 8.52255 7.63874L17.3613 16.4775C17.4752 16.5954 17.5381 16.7532 17.5367 16.9171C17.5353 17.081 17.4696 17.2377 17.3537 17.3536C17.2378 17.4695 17.0811 17.5352 16.9172 17.5367C16.7533 17.5381 16.5954 17.4751 16.4776 17.3612L7.6388 8.52249C7.52163 8.40529 7.45581 8.24634 7.45581 8.08062C7.45581 7.91489 7.52163 7.75595 7.6388 7.63874Z"
+                    fill="#FF7272"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <p class="question">
+              Seu cliente compra mesmos itens com recorrência?
+            </p>
+
+            <p class="consequence">Garante a praticidade da recompra.</p>
+          </div>
+
+          <div class="result" id="result_question_6">
+            <div class="icon">
+              <div class="yes">
+                <svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.49988 14.125L12.2499 17.875L18.4999 10.375"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.5 26C20.4036 26 26 20.4036 26 13.5C26 6.59644 20.4036 1 13.5 1C6.59644 1 1 6.59644 1 13.5C1 20.4036 6.59644 26 13.5 26Z"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                  />
+                </svg>
+              </div>
+
+              <div class="no">
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.5 23.75C18.7131 23.75 23.75 18.7131 23.75 12.5C23.75 6.28687 18.7131 1.25 12.5 1.25C6.28687 1.25 1.25 6.28687 1.25 12.5C1.25 18.7131 6.28687 23.75 12.5 23.75ZM12.5 25C19.4037 25 25 19.4037 25 12.5C25 5.59625 19.4037 0 12.5 0C5.59625 0 0 5.59625 0 12.5C0 19.4037 5.59625 25 12.5 25Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 17.3613C7.52163 17.2441 7.45581 17.0851 7.45581 16.9194C7.45581 16.7537 7.52163 16.5947 7.6388 16.4775L16.4776 7.63876C16.5954 7.52491 16.7533 7.46192 16.9172 7.46334C17.0811 7.46477 17.2378 7.5305 17.3537 7.64638C17.4696 7.76226 17.5353 7.91901 17.5367 8.08289C17.5381 8.24676 17.4752 8.40464 17.3613 8.52251L8.52255 17.3613C8.40535 17.4784 8.24641 17.5443 8.08068 17.5443C7.91495 17.5443 7.75601 17.4784 7.6388 17.3613Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 7.63874C7.75601 7.52157 7.91495 7.45575 8.08068 7.45575C8.24641 7.45575 8.40535 7.52157 8.52255 7.63874L17.3613 16.4775C17.4752 16.5954 17.5381 16.7532 17.5367 16.9171C17.5353 17.081 17.4696 17.2377 17.3537 17.3536C17.2378 17.4695 17.0811 17.5352 16.9172 17.5367C16.7533 17.5381 16.5954 17.4751 16.4776 17.3612L7.6388 8.52249C7.52163 8.40529 7.45581 8.24634 7.45581 8.08062C7.45581 7.91489 7.52163 7.75595 7.6388 7.63874Z"
+                    fill="#FF7272"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <p class="question">
+              Seus executivos tem uma rotina de acompanhamento gerencial de
+              pedidos?
+            </p>
+
+            <p class="consequence">
+              Você tem uma visão mais clara do atingimento e replanejamento das
+              metas.
+            </p>
+          </div>
+
+          <div class="result" id="result_question_7">
+            <div class="icon">
+              <div class="yes">
+                <svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.49988 14.125L12.2499 17.875L18.4999 10.375"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.5 26C20.4036 26 26 20.4036 26 13.5C26 6.59644 20.4036 1 13.5 1C6.59644 1 1 6.59644 1 13.5C1 20.4036 6.59644 26 13.5 26Z"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                  />
+                </svg>
+              </div>
+
+              <div class="no">
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.5 23.75C18.7131 23.75 23.75 18.7131 23.75 12.5C23.75 6.28687 18.7131 1.25 12.5 1.25C6.28687 1.25 1.25 6.28687 1.25 12.5C1.25 18.7131 6.28687 23.75 12.5 23.75ZM12.5 25C19.4037 25 25 19.4037 25 12.5C25 5.59625 19.4037 0 12.5 0C5.59625 0 0 5.59625 0 12.5C0 19.4037 5.59625 25 12.5 25Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 17.3613C7.52163 17.2441 7.45581 17.0851 7.45581 16.9194C7.45581 16.7537 7.52163 16.5947 7.6388 16.4775L16.4776 7.63876C16.5954 7.52491 16.7533 7.46192 16.9172 7.46334C17.0811 7.46477 17.2378 7.5305 17.3537 7.64638C17.4696 7.76226 17.5353 7.91901 17.5367 8.08289C17.5381 8.24676 17.4752 8.40464 17.3613 8.52251L8.52255 17.3613C8.40535 17.4784 8.24641 17.5443 8.08068 17.5443C7.91495 17.5443 7.75601 17.4784 7.6388 17.3613Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 7.63874C7.75601 7.52157 7.91495 7.45575 8.08068 7.45575C8.24641 7.45575 8.40535 7.52157 8.52255 7.63874L17.3613 16.4775C17.4752 16.5954 17.5381 16.7532 17.5367 16.9171C17.5353 17.081 17.4696 17.2377 17.3537 17.3536C17.2378 17.4695 17.0811 17.5352 16.9172 17.5367C16.7533 17.5381 16.5954 17.4751 16.4776 17.3612L7.6388 8.52249C7.52163 8.40529 7.45581 8.24634 7.45581 8.08062C7.45581 7.91489 7.52163 7.75595 7.6388 7.63874Z"
+                    fill="#FF7272"
+                  />
+                </svg>
+              </div>
+            </div>
+            <p class="question">
+              Existe algum relatório gerencial para apresentar para seus
+              clientes?
+            </p>
+
+            <p class="consequence">
+              Análise das últimas compras do seu cliente.
+            </p>
+          </div>
+
+          <div class="result" id="result_question_8">
+            <div class="icon">
+              <div class="yes">
+                <svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.49988 14.125L12.2499 17.875L18.4999 10.375"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.5 26C20.4036 26 26 20.4036 26 13.5C26 6.59644 20.4036 1 13.5 1C6.59644 1 1 6.59644 1 13.5C1 20.4036 6.59644 26 13.5 26Z"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                  />
+                </svg>
+              </div>
+
+              <div class="no">
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.5 23.75C18.7131 23.75 23.75 18.7131 23.75 12.5C23.75 6.28687 18.7131 1.25 12.5 1.25C6.28687 1.25 1.25 6.28687 1.25 12.5C1.25 18.7131 6.28687 23.75 12.5 23.75ZM12.5 25C19.4037 25 25 19.4037 25 12.5C25 5.59625 19.4037 0 12.5 0C5.59625 0 0 5.59625 0 12.5C0 19.4037 5.59625 25 12.5 25Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 17.3613C7.52163 17.2441 7.45581 17.0851 7.45581 16.9194C7.45581 16.7537 7.52163 16.5947 7.6388 16.4775L16.4776 7.63876C16.5954 7.52491 16.7533 7.46192 16.9172 7.46334C17.0811 7.46477 17.2378 7.5305 17.3537 7.64638C17.4696 7.76226 17.5353 7.91901 17.5367 8.08289C17.5381 8.24676 17.4752 8.40464 17.3613 8.52251L8.52255 17.3613C8.40535 17.4784 8.24641 17.5443 8.08068 17.5443C7.91495 17.5443 7.75601 17.4784 7.6388 17.3613Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 7.63874C7.75601 7.52157 7.91495 7.45575 8.08068 7.45575C8.24641 7.45575 8.40535 7.52157 8.52255 7.63874L17.3613 16.4775C17.4752 16.5954 17.5381 16.7532 17.5367 16.9171C17.5353 17.081 17.4696 17.2377 17.3537 17.3536C17.2378 17.4695 17.0811 17.5352 16.9172 17.5367C16.7533 17.5381 16.5954 17.4751 16.4776 17.3612L7.6388 8.52249C7.52163 8.40529 7.45581 8.24634 7.45581 8.08062C7.45581 7.91489 7.52163 7.75595 7.6388 7.63874Z"
+                    fill="#FF7272"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <p class="question">
+              Possui acompanhamento do histórico de pedidos dos seus clientes?
+            </p>
+
+            <p class="consequence">
+              Você tem uma visão mais clara do atingimento e replanejamento das
+              metas.
+            </p>
+          </div>
+
+          <div class="result" id="result_question_9">
+            <div class="icon">
+              <div class="yes">
+                <svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.49988 14.125L12.2499 17.875L18.4999 10.375"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.5 26C20.4036 26 26 20.4036 26 13.5C26 6.59644 20.4036 1 13.5 1C6.59644 1 1 6.59644 1 13.5C1 20.4036 6.59644 26 13.5 26Z"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                  />
+                </svg>
+              </div>
+
+              <div class="no">
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.5 23.75C18.7131 23.75 23.75 18.7131 23.75 12.5C23.75 6.28687 18.7131 1.25 12.5 1.25C6.28687 1.25 1.25 6.28687 1.25 12.5C1.25 18.7131 6.28687 23.75 12.5 23.75ZM12.5 25C19.4037 25 25 19.4037 25 12.5C25 5.59625 19.4037 0 12.5 0C5.59625 0 0 5.59625 0 12.5C0 19.4037 5.59625 25 12.5 25Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 17.3613C7.52163 17.2441 7.45581 17.0851 7.45581 16.9194C7.45581 16.7537 7.52163 16.5947 7.6388 16.4775L16.4776 7.63876C16.5954 7.52491 16.7533 7.46192 16.9172 7.46334C17.0811 7.46477 17.2378 7.5305 17.3537 7.64638C17.4696 7.76226 17.5353 7.91901 17.5367 8.08289C17.5381 8.24676 17.4752 8.40464 17.3613 8.52251L8.52255 17.3613C8.40535 17.4784 8.24641 17.5443 8.08068 17.5443C7.91495 17.5443 7.75601 17.4784 7.6388 17.3613Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 7.63874C7.75601 7.52157 7.91495 7.45575 8.08068 7.45575C8.24641 7.45575 8.40535 7.52157 8.52255 7.63874L17.3613 16.4775C17.4752 16.5954 17.5381 16.7532 17.5367 16.9171C17.5353 17.081 17.4696 17.2377 17.3537 17.3536C17.2378 17.4695 17.0811 17.5352 16.9172 17.5367C16.7533 17.5381 16.5954 17.4751 16.4776 17.3612L7.6388 8.52249C7.52163 8.40529 7.45581 8.24634 7.45581 8.08062C7.45581 7.91489 7.52163 7.75595 7.6388 7.63874Z"
+                    fill="#FF7272"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <p class="question">
+              Consegue analisar a variação e origens dos pedidos / OS's ao longo
+              dos meses?
+            </p>
+
+            <p class="consequence">
+              Você tem uma visão mais clara do atingimento e replanejamento das
+              metas.
+            </p>
+          </div>
+
+          <div class="result" id="result_question_10">
+            <div class="icon">
+              <div class="yes">
+                <svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.49988 14.125L12.2499 17.875L18.4999 10.375"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.5 26C20.4036 26 26 20.4036 26 13.5C26 6.59644 20.4036 1 13.5 1C6.59644 1 1 6.59644 1 13.5C1 20.4036 6.59644 26 13.5 26Z"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                  />
+                </svg>
+              </div>
+
+              <div class="no">
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.5 23.75C18.7131 23.75 23.75 18.7131 23.75 12.5C23.75 6.28687 18.7131 1.25 12.5 1.25C6.28687 1.25 1.25 6.28687 1.25 12.5C1.25 18.7131 6.28687 23.75 12.5 23.75ZM12.5 25C19.4037 25 25 19.4037 25 12.5C25 5.59625 19.4037 0 12.5 0C5.59625 0 0 5.59625 0 12.5C0 19.4037 5.59625 25 12.5 25Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 17.3613C7.52163 17.2441 7.45581 17.0851 7.45581 16.9194C7.45581 16.7537 7.52163 16.5947 7.6388 16.4775L16.4776 7.63876C16.5954 7.52491 16.7533 7.46192 16.9172 7.46334C17.0811 7.46477 17.2378 7.5305 17.3537 7.64638C17.4696 7.76226 17.5353 7.91901 17.5367 8.08289C17.5381 8.24676 17.4752 8.40464 17.3613 8.52251L8.52255 17.3613C8.40535 17.4784 8.24641 17.5443 8.08068 17.5443C7.91495 17.5443 7.75601 17.4784 7.6388 17.3613Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 7.63874C7.75601 7.52157 7.91495 7.45575 8.08068 7.45575C8.24641 7.45575 8.40535 7.52157 8.52255 7.63874L17.3613 16.4775C17.4752 16.5954 17.5381 16.7532 17.5367 16.9171C17.5353 17.081 17.4696 17.2377 17.3537 17.3536C17.2378 17.4695 17.0811 17.5352 16.9172 17.5367C16.7533 17.5381 16.5954 17.4751 16.4776 17.3612L7.6388 8.52249C7.52163 8.40529 7.45581 8.24634 7.45581 8.08062C7.45581 7.91489 7.52163 7.75595 7.6388 7.63874Z"
+                    fill="#FF7272"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <p class="question">
+              Seu cliente consegue realizar a alteração do pedido emitido via
+              Portal?
+            </p>
+
+            <p class="consequence">Assegura a competitividade no mercado.</p>
+          </div>
+
+          <div class="result" id="result_question_11">
+            <div class="icon">
+              <div class="yes">
+                <svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.49988 14.125L12.2499 17.875L18.4999 10.375"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.5 26C20.4036 26 26 20.4036 26 13.5C26 6.59644 20.4036 1 13.5 1C6.59644 1 1 6.59644 1 13.5C1 20.4036 6.59644 26 13.5 26Z"
+                    stroke="#0CC28A"
+                    stroke-width="1.36364"
+                  />
+                </svg>
+              </div>
+
+              <div class="no">
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.5 23.75C18.7131 23.75 23.75 18.7131 23.75 12.5C23.75 6.28687 18.7131 1.25 12.5 1.25C6.28687 1.25 1.25 6.28687 1.25 12.5C1.25 18.7131 6.28687 23.75 12.5 23.75ZM12.5 25C19.4037 25 25 19.4037 25 12.5C25 5.59625 19.4037 0 12.5 0C5.59625 0 0 5.59625 0 12.5C0 19.4037 5.59625 25 12.5 25Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 17.3613C7.52163 17.2441 7.45581 17.0851 7.45581 16.9194C7.45581 16.7537 7.52163 16.5947 7.6388 16.4775L16.4776 7.63876C16.5954 7.52491 16.7533 7.46192 16.9172 7.46334C17.0811 7.46477 17.2378 7.5305 17.3537 7.64638C17.4696 7.76226 17.5353 7.91901 17.5367 8.08289C17.5381 8.24676 17.4752 8.40464 17.3613 8.52251L8.52255 17.3613C8.40535 17.4784 8.24641 17.5443 8.08068 17.5443C7.91495 17.5443 7.75601 17.4784 7.6388 17.3613Z"
+                    fill="#FF7272"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.6388 7.63874C7.75601 7.52157 7.91495 7.45575 8.08068 7.45575C8.24641 7.45575 8.40535 7.52157 8.52255 7.63874L17.3613 16.4775C17.4752 16.5954 17.5381 16.7532 17.5367 16.9171C17.5353 17.081 17.4696 17.2377 17.3537 17.3536C17.2378 17.4695 17.0811 17.5352 16.9172 17.5367C16.7533 17.5381 16.5954 17.4751 16.4776 17.3612L7.6388 8.52249C7.52163 8.40529 7.45581 8.24634 7.45581 8.08062C7.45581 7.91489 7.52163 7.75595 7.6388 7.63874Z"
+                    fill="#FF7272"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <p class="question">
+              Sua empresa possui um aplicativo para centralizar o relacionamento
+              com os clientes?
+            </p>
+
+            <p class="consequence">Assegura a competitividade no mercado.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="container">
+      <img src="code.png" alt="Code Tecnologia" width="160" height="53" />
+      <p>Indra Tech Hub – Av. Uirapuru, 840 – Cidade Jardim – Uberlândia</p>
+    </footer>
+
+    <div id="modal" class="overlay">
+      <div class="modal">
+        <button type="button" onclick="onModalClose()">
+          FORMULÁRIO DO ACTIVECAMPAIGN
+        </button>
+      </div>
+    </div>
+
+    <script>
+      init();
+
+      function init() {
+        showResults();
+
+        document.getElementById("loading").style.display = "none";
+      }
+
+      function showResults() {
+        const answers = getAnswers("@udilink");
+
+        if (answers) {
+          buildResultItems(answers);
+          document.getElementById("section-two").style.display = "block";
+        } else {
+          document.getElementById("section-one").style.display = "block";
+        }
+
+        buildResults(answers);
+      }
+
+      function buildResultItems(answers) {
+        const results = document.querySelectorAll(".result");
+
+        results.forEach((result, index) => {
+          const id = result.id.replace("result_", "");
+
+          if (answers[id]) result.classList.add("yes");
+          else result.classList.add("no");
+        });
+      }
+
+      function buildResults(answers) {
+        if (answers) {
+          const totalQuestions = document.querySelectorAll(".option").length;
+          const percent = (Object.keys(answers).length / totalQuestions) * 100;
+
+          if (percent >= 0 && percent <= 50) showThermometer("bad");
+          if (percent > 50 && percent <= 90) showThermometer("more-or-less");
+          if (percent > 90) showThermometer("great");
+
+          showResultsInfo(percent);
+        } else {
+          showThermometer();
+        }
+      }
+
+      function showThermometer(type = "empty") {
+        const wrapper = document.querySelector(`.thermometer.${type} svg`);
+
+        setTimeout(function () {
+          wrapper.classList.add("active");
+        }, 50);
+      }
+
+      function showResultsInfo(percent) {
+        const wrapper = document.getElementById(`results_info`);
+        const presentation = document.getElementById(`presentation`);
+        const resultTitle = document.getElementById("result_title");
+        const resultText = document.getElementById("result_text");
+        const header = document.querySelector("header");
+
+        wrapper.style.display = "block";
+        presentation.style.display = "none";
+        header.style.paddingBottom = "37px";
+
+        if (percent >= 0 && percent <= 50) {
+          resultTitle.style.color = "var(--danger)";
+          resultTitle.innerHTML = "NÍVEL DE EFICIÊNCIA BAIXO.";
+          resultText.innerHTML =
+            "Ainda existem inúmeros processos importantes que a sua empresa não faz e podem estar impactando na rentabilidade, na sustentabilidade e nas estratégias em relação ao mercado.";
+        }
+
+        if (percent > 50 && percent <= 90) {
+          resultTitle.style.color = "var(--warn)";
+          resultTitle.innerHTML = "NÍVEL DE EFICIÊNCIA RAZOÁVEL.";
+          resultText.innerHTML =
+            "Ainda existem inúmeros processos importantes que a sua empresa não faz e podem estar impactando na rentabilidade, na sustentabilidade e nas estratégias em relação ao mercado.";
+        }
+
+        if (percent > 90) {
+          resultTitle.style.color = "var(--ok)";
+          resultTitle.innerHTML = "NÍVEL DE EFICIÊNCIA EXECELENTE.";
+          resultText.innerHTML =
+            "Ainda existem inúmeros processos importantes que a sua empresa não faz e podem estar impactando na rentabilidade, na sustentabilidade e nas estratégias em relação ao mercado.";
+        }
+      }
+
+      function onSubmit(event) {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+        const formProps = Object.fromEntries(formData);
+
+        persitAnswers("@udilink", formProps);
+        openModal();
+      }
+
+      function openModal() {
+        document.getElementById("modal").style.display = "block";
+        document.body.style.overflow = "hidden";
+      }
+
+      function onModalClose() {
+        document.body.style.overflow = "auto";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        document.getElementById("modal").style.display = "none";
+        document.getElementById("section-one").style.display = "none";
+
+        showResults();
+      }
+
+      function persitAnswers(page, answers) {
+        localStorage.setItem(page + ":answers", JSON.stringify(answers));
+      }
+
+      function getAnswers(page) {
+        const answers = localStorage.getItem(page + ":answers");
+
+        return answers ? JSON.parse(answers) : answers;
+      }
+
+      function onCheckboxChange(event, option) {
+        const checked = event.target.checked;
+        const element = document.getElementById(option);
+
+        if (checked) element.classList.add("selected");
+        else element.classList.remove("selected");
+      }
+    </script>
+  </body>
+</html>
