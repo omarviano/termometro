@@ -586,12 +586,13 @@
       }
     }
 
-    .body,
-    .button {
+    .elementor-kit-6 .body,
+    .elementor-kit-6 .button {
       font: 400 1rem var(--font);
       font-display: optional;
       color: var(--black);
     }
+
 
     body {
       background-color: var(--white);
@@ -614,20 +615,20 @@
       margin-bottom: 28px;
     }
 
-    .h1 {
+    .elementor-kit-6 .h1 {
       font-size: 22px;
-      max-width: 441px;
+      max-width: 482px;
       font-weight: 400;
     }
 
-    .h2 {
+    .elementor-kit-6 .h2 {
       font-size: 16px;
       font-weight: 700;
       color: var(--primary);
       margin-top: 10px;
     }
 
-    .button {
+    .elementor-kit-6 .button {
       font-weight: 800;
       font-size: 20px;
       color: var(--white);
@@ -640,8 +641,9 @@
       transition: filter 0.25s;
     }
 
-    .button:hover,
-    .button:focus {
+    .elementor-kit-6 .button:hover,
+    .elementor-kit-6 .button:focus {
+      background-color: var(--primary);
       filter: brightness(0.915);
     }
 
@@ -2154,7 +2156,7 @@
         const percent = (Object.keys(answers).length / totalQuestions) * 100;
 
         hiddenThermometer();
-        
+
         if (percent >= 0 && percent < 50) showThermometer("bad");
         if (percent >= 50 && percent <= 87.5) showThermometer("more-or-less");
         if (percent > 87.5) showThermometer("great");

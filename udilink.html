@@ -586,8 +586,8 @@
       }
     }
 
-    .body,
-    .button {
+    .elementor-kit-6 .body,
+    .elementor-kit-6 .button {
       font: 400 1rem var(--font);
       font-display: optional;
       color: var(--black);
@@ -614,20 +614,20 @@
       margin-bottom: 28px;
     }
 
-    .h1 {
+    .elementor-kit-6 .h1 {
       font-size: 22px;
       max-width: 482px;
       font-weight: 400;
     }
 
-    .h2 {
+    .elementor-kit-6 .h2 {
       font-size: 16px;
       font-weight: 700;
       color: var(--primary);
       margin-top: 10px;
     }
 
-    .button {
+    .elementor-kit-6 .button {
       font-weight: 800;
       font-size: 20px;
       color: var(--white);
@@ -640,8 +640,9 @@
       transition: filter 0.25s;
     }
 
-    .button:hover,
-    .button:focus {
+    .elementor-kit-6 .button:hover,
+    .elementor-kit-6 .button:focus {
+      background-color: var(--primary);
       filter: brightness(0.915);
     }
 
@@ -782,12 +783,6 @@
       user-select: none;
       border: 1px solid transparent;
       transition: border-color 0.25s;
-    }
-
-    .option-alt {
-      flex-direction: row-reverse;
-      justify-content: flex-end;
-      gap: 24px;
     }
 
     .option .option-check input {
@@ -1182,7 +1177,7 @@
 
       <form id="form" onsubmit="onSubmit(event)">
         <div class="options">
-          <div class="option option-alt" id="container_question_1">
+          <div class="option" id="container_question_1">
             <label class="option-label" for="question_1">
               Possui alguma integração com Sankhya?
             </label>
@@ -1197,7 +1192,7 @@
             </div>
           </div>
 
-          <div class="option option-alt" id="container_question_2">
+          <div class="option" id="container_question_2">
             <label class="option-label" for="question_2">
               Possui contrato com e-commerces ou marketplaces?
             </label>
@@ -1212,7 +1207,7 @@
             </div>
           </div>
 
-          <div class="option option-alt" id="container_question_3">
+          <div class="option" id="container_question_3">
             <label class="option-label" for="question_3">
               Sua empresa vende em e-commerces ou marketplaces?
             </label>
@@ -1227,7 +1222,7 @@
             </div>
           </div>
 
-          <div class="option option-alt" id="container_question_4">
+          <div class="option" id="container_question_4">
             <label class="option-label" for="question_4">
               Possui integração dos pedidos com Sankhya?
             </label>
@@ -1242,7 +1237,7 @@
             </div>
           </div>
 
-          <div class="option option-alt" id="container_question_5">
+          <div class="option" id="container_question_5">
             <label class="option-label" for="question_5">
               Possui gestão mais centralizada de pedidos?
             </label>
@@ -1257,7 +1252,7 @@
             </div>
           </div>
 
-          <div class="option option-alt" id="container_question_6">
+          <div class="option" id="container_question_6">
             <label class="option-label" for="question_6">
               Possui mais de um marketplace?
             </label>
@@ -1272,7 +1267,7 @@
             </div>
           </div>
 
-          <div class="option option-alt" id="container_question_7">
+          <div class="option" id="container_question_7">
             <label class="option-label" for="question_7">
               Sua empresa sincroniza o estoque em tempo real com os canais de
               venda?
@@ -1288,7 +1283,7 @@
             </div>
           </div>
 
-          <div class="option option-alt" id="container_question_8">
+          <div class="option" id="container_question_8">
             <label class="option-label" for="question_8">
               Sua empresa sincroniza o preço em tempo real com os canais de
               venda?
@@ -1304,7 +1299,7 @@
             </div>
           </div>
 
-          <div class="option option-alt" id="container_question_9">
+          <div class="option" id="container_question_9">
             <label class="option-label" for="question_9">
               Sua empresa sincroniza o mix de produtos e imagens em tempo real
               com os canais de venda?
@@ -1320,7 +1315,7 @@
             </div>
           </div>
 
-          <div class="option option-alt" id="container_question_10">
+          <div class="option" id="container_question_10">
             <label class="option-label" for="question_10">
               Sua empresa sincroniza o cadastro de clientes em tempo real com
               os canais de venda?
@@ -1336,7 +1331,7 @@
             </div>
           </div>
 
-          <div class="option option-alt" id="container_question_11">
+          <div class="option" id="container_question_11">
             <label class="option-label" for="question_11">
               Sua empresa sincroniza o faturamento em tempo real com os canais
               de venda?
@@ -1865,7 +1860,7 @@
         const percent = (Object.keys(answers).length / totalQuestions) * 100;
 
         hiddenThermometer();
-        
+
         if (percent >= 0 && percent < 50) showThermometer("bad");
         if (percent >= 50 && percent <= 87.5) showThermometer("more-or-less");
         if (percent > 87.5) showThermometer("great");
