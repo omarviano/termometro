@@ -587,12 +587,14 @@
     }
 
     .elementor-kit-6 .body,
-    .elementor-kit-6 .button {
+    .elementor-kit-6 .button,
+    .elementor-kit-6,
+    .body,
+    .button {
       font: 400 1rem var(--font);
       font-display: optional;
       color: var(--black);
     }
-
     body {
       background-color: var(--white);
     }
@@ -614,20 +616,23 @@
       margin-bottom: 28px;
     }
 
-    .elementor-kit-6 .h1 {
+    .elementor-kit-6 .h1,
+    .h1 {
       font-size: 22px;
       max-width: 482px;
       font-weight: 400;
     }
 
-    .elementor-kit-6 .h2 {
+    .elementor-kit-6 .h2,
+    .h2 {
       font-size: 16px;
       font-weight: 700;
       color: var(--primary);
       margin-top: 10px;
     }
 
-    .elementor-kit-6 .button {
+    .elementor-kit-6 .button,
+    .button {
       font-weight: 800;
       font-size: 20px;
       color: var(--white);
@@ -641,7 +646,9 @@
     }
 
     .elementor-kit-6 .button:hover,
-    .elementor-kit-6 .button:focus {
+    .elementor-kit-6 .button:focus,
+    .button:hover,
+    .button:focus {
       background-color: var(--primary);
       filter: brightness(0.915);
     }
@@ -920,7 +927,7 @@
 
     @media (max-width: 1024px) {
       .thermometer {
-        right: 0;
+        left: auto;
       }
     }
 
